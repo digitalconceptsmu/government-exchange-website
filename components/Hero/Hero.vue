@@ -6,7 +6,6 @@ import { ArrowRight } from 'lucide-vue-next';
   <section class="relative bg-gradient-to-r from-primary to-[#2d8c61] text-white overflow-hidden">
     <div class="container mx-auto px-4 py-20 lg:py-32">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Content -->
         <div class="space-y-6">
           <div class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
             <span class="text-sm">Leading UK Training Provider</span>
@@ -30,7 +29,6 @@ import { ArrowRight } from 'lucide-vue-next';
           </div>
         </div>
 
-        <!-- Image -->
         <div class="relative">
           <div class="absolute inset-0 bg-gradient-to-tr from-primary/50 to-transparent rounded-2xl"></div>
           <img
@@ -42,7 +40,6 @@ import { ArrowRight } from 'lucide-vue-next';
       </div>
     </div>
 
-    <!-- Decorative Elements -->
     <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent"></div>
     <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-black/10 to-transparent"></div>
   </section>

@@ -11,6 +11,7 @@ const companyInfo = {
 
 const quickLinks = [
   { name: 'Home', href: '#' },
+  { name: 'Registration', href: '#registration' },
   { name: 'About Us', href: '#about' },
   { name: 'Course List', href: '#courses' },
   { name: 'Registration', href: '#register' },
