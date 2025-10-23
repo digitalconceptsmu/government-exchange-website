@@ -4,6 +4,7 @@ import { ref } from "vue";
 
 const mobileMenuOpen = ref(false);
 const coursesDropdownOpen = ref(false);
+let closeTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -17,6 +18,20 @@ const coursesDropdown = [
   { name: "Upcoming Courses", href: "/courses/upcoming" },
   { name: "E-learning", href: "/courses/e-learning" },
 ];
+
+const handleMouseEnter = () => {
+  if (closeTimeout) {
+    clearTimeout(closeTimeout);
+    closeTimeout = null;
+  }
+  coursesDropdownOpen.value = true;
+};
+
+const handleMouseLeave = () => {
+  closeTimeout = setTimeout(() => {
+    coursesDropdownOpen.value = false;
+  }, 100);
+};
 </script>
 
 <template>
@@ -70,8 +85,8 @@ const coursesDropdown = [
 
             <div
               class="relative"
-              @mouseenter="coursesDropdownOpen = true"
-              @mouseleave="coursesDropdownOpen = false"
+              @mouseenter="handleMouseEnter"
+              @mouseleave="handleMouseLeave"
             >
               <button
                 :class="[
@@ -88,6 +103,8 @@ const coursesDropdown = [
               <div
                 v-if="coursesDropdownOpen"
                 class="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                @mouseenter="handleMouseEnter"
+                @mouseleave="handleMouseLeave"
               >
                 <NuxtLink
                   v-for="item in coursesDropdown"
@@ -121,11 +138,11 @@ const coursesDropdown = [
               {{ link.name }}
             </NuxtLink>
 
-            <NuxtLink to="/registration">
+            <NuxtLink to="/courses">
               <Button
                 class="ml-4 bg-primary py-2 px-4 text-sm rounded-md text-white hover:bg-primary/90"
               >
-                Register Now
+                Explore Courses
               </Button>
             </NuxtLink>
           </nav>
@@ -213,9 +230,9 @@ const coursesDropdown = [
           </NuxtLink>
 
           <div class="px-4 pt-4">
-            <NuxtLink to="/registration">
+            <NuxtLink to="/courses">
               <Button class="w-full bg-primary hover:bg-primary/90">
-                Register Now
+                Explore Courses
               </Button>
             </NuxtLink>
           </div>

@@ -85,7 +85,7 @@ const categories = [
             {{ category.description }}
           </p>
           <a
-            href="#"
+            hef="#"
             class="text-primary text-sm font-medium inline-flex items-center hover:underline group/link mt-auto"
           >
             Learn More
