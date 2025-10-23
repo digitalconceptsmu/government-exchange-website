@@ -84,16 +84,10 @@ const testimonials = [
 
 <template>
   <div id="about">
-    <!-- What we say about us -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12 items-start">
-          <!-- Left Column - Text Content -->
           <div class="space-y-6">
-            <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-8">
-              What we say about us
-            </h2>
-
             <p class="text-gray-700 leading-relaxed">
               Government Exchange is the training division of the Centre for
               Parliamentary Studies.
@@ -136,7 +130,6 @@ const testimonials = [
             </p>
           </div>
 
-          <!-- Right Column - Image -->
           <div class="lg:sticky lg:top-8">
             <!-- <img
               src="/images/government-exchange-brochure.jpg"
@@ -148,7 +141,6 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- Our Values -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto mb-12">
@@ -179,7 +171,6 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- What We Offer -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto mb-12">
