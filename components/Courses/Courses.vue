@@ -59,9 +59,7 @@ const categories = [
   <section id="courses" class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl lg:text-5xl text-gray-900 mb-6">
-          Training Categories
-        </h2>
+        <h2 class="text-3xl lg:text-5xl text-gray-900 mb-6">Our Courses</h2>
         <p class="text-lg text-gray-600">
           Explore our comprehensive range of professional development courses
           designed specifically for civil servants and public sector
