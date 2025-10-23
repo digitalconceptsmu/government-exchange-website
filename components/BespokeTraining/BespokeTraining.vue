@@ -8,7 +8,6 @@ import { Button } from "~/components/ui/button";
     <div class="container mx-auto px-4">
       <div class="bg-primary rounded-2xl overflow-hidden max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
-          <!-- Left Column -->
           <div class="p-8 lg:p-12">
             <h2 class="text-3xl lg:text-4xl font-semibold text-white mb-4">
               Need Bespoke Training?
@@ -25,7 +24,6 @@ import { Button } from "~/components/ui/button";
             </Button>
           </div>
 
-          <!-- Right Column -->
           <div class="p-8 lg:p-12 space-y-4">
             <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h4 class="text-white font-semibold mb-2">Flexible Delivery</h4>

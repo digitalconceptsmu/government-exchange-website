@@ -83,7 +83,6 @@ const currentCourses = computed(() => {
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-7xl mx-auto">
-        <!-- Tabs -->
         <div class="flex gap-4 mb-12 border-b border-gray-200">
           <button
             v-for="tab in tabs"
@@ -100,7 +99,6 @@ const currentCourses = computed(() => {
           </button>
         </div>
 
-        <!-- Introduction Text -->
         <div class="mb-12 max-w-4xl">
           <p class="text-gray-700 mb-4">
             Explore a range of eLearning courses developed by our parent organisation, the International Centre for Parliamentary Studies (ICPS).
@@ -110,7 +108,6 @@ const currentCourses = computed(() => {
           </p>
         </div>
 
-        <!-- Course Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <CourseCard
             v-for="(course, index) in currentCourses"

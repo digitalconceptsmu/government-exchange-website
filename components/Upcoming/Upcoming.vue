@@ -70,14 +70,12 @@ const upcomingCourses = {
   <section id="upcoming" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-5xl mx-auto">
-        <!-- Intro Text -->
         <div class="bg-white rounded-lg shadow-sm p-8 mb-12">
           <p class="text-gray-700 leading-relaxed">
             The following courses are currently accepting delegate registrations. Click on any course that interest you or your organization for more details.
           </p>
         </div>
 
-        <!-- November Section -->
         <div class="mb-12">
           <div class="mb-6">
             <h2 class="text-2xl font-semibold text-gray-900 mb-3">
@@ -138,7 +136,6 @@ const upcomingCourses = {
           </div>
         </div>
 
-        <!-- CTA Section -->
         <div class="bg-primary rounded-lg p-12 text-white text-center">
           <h3 class="text-3xl font-semibold mb-4">
             Ready to Register?

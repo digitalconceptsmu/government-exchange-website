@@ -212,7 +212,6 @@ const handleMouseLeave = () => {
             </div>
           </div>
 
-          <!-- Other Links -->
           <NuxtLink
             v-for="link in navLinks.filter((l) => l.name !== 'Home')"
             :key="link.name"

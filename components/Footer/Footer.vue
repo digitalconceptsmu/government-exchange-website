@@ -27,7 +27,6 @@ const policies = [
   <footer id="contact" class="bg-gray-900 text-white">
     <div class="container mx-auto px-4 py-16">
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-        <!-- Company Info -->
         <div class="lg:col-span-2">
           <h3 class="text-2xl mb-4">Government Exchange</h3>
           <p class="text-sm text-gray-400 mb-6">
@@ -59,7 +58,6 @@ const policies = [
           </div>
         </div>
 
-        <!-- Quick Links -->
         <div>
           <h4 class="mb-6">Quick Links</h4>
           <ul class="space-y-3">
@@ -74,7 +72,6 @@ const policies = [
           </ul>
         </div>
 
-        <!-- Legal -->
         <div>
           <h4 class="mb-6">Legal</h4>
           <ul class="space-y-3">
@@ -90,7 +87,6 @@ const policies = [
         </div>
       </div>
 
-      <!-- Bottom Bar -->
       <div class="border-t border-gray-800 pt-8">
         <div
           class="flex flex-col lg:flex-row justify-between gap-4 text-sm text-gray-400"

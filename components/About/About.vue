@@ -131,11 +131,11 @@ const testimonials = [
           </div>
 
           <div class="lg:sticky lg:top-8">
-            <!-- <img
+            <img
               src="/images/government-exchange-brochure.jpg"
               alt="Government Exchange Brochure"
               class="w-full rounded-lg shadow-lg"
-            /> -->
+            />
           </div>
         </div>
       </div>

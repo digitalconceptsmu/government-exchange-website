@@ -42,12 +42,12 @@ import { Button } from "~/components/ui/button";
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-tl from-white/5 to-transparent rounded-2xl pointer-events-none z-10"></div>
 
-            <div class="relative rounded-2xl shadow-2xl p-8 transform transition-transform duration-300">
-              <!-- <img
+            <div class="relative bg-white rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-300">
+              <img
                 src="/images/government-exchange-brochure.jpg"
                 alt="Government Exchange Training Brochure"
                 class="w-full h-auto rounded-lg"
-              /> -->
+              />
             </div>
           </div>
         </div>

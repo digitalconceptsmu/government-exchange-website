@@ -46,7 +46,6 @@ const clients = [
   <section id="bespoke" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
-        <!-- Left Column - Main Content -->
         <div class="lg:col-span-8">
           <div class="space-y-6 text-gray-700 leading-relaxed">
             <p>
@@ -75,7 +74,6 @@ const clients = [
             </p>
           </div>
 
-          <!-- Benefits Section -->
           <div
             class="mt-12 bg-white shadow-sm border-gray-100 border-2 rounded-xl p-8"
           >
@@ -104,7 +102,6 @@ const clients = [
             </ul>
           </div>
 
-          <!-- Training Areas Section -->
           <div class="mt-12 rounded-lg p-8">
             <div class="flex items-start gap-4 mb-6">
               <div
@@ -136,7 +133,6 @@ const clients = [
             </div>
           </div>
 
-          <!-- Partnership & Accreditation Section -->
           <div class="mt-12 border-2 border-primary rounded-lg p-8 space-y-6">
             <p class="text-gray-700">
               We can also provide training on any current public policy issue in
@@ -169,7 +165,6 @@ const clients = [
             </p>
           </div>
 
-          <!-- CPD Accreditation Badge -->
           <div
             class="mt-12 bg-white border border-gray-200 rounded-lg p-6 flex items-start gap-6"
           >
@@ -190,7 +185,6 @@ const clients = [
           </div>
         </div>
 
-        <!-- Right Column - Sidebar -->
         <div class="lg:col-span-4">
           <div class="bg-white border-2 rounded-xl p-8 sticky top-8">
             <div class="flex items-center gap-3 mb-6">

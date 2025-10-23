@@ -43,7 +43,6 @@ const handleSubmit = () => {
             </div>
 
             <div class="space-y-8">
-              <!-- Address -->
               <div class="flex items-start gap-4">
                 <MapPin class="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div class="text-gray-700 leading-relaxed">
@@ -55,7 +54,6 @@ const handleSubmit = () => {
                 </div>
               </div>
 
-              <!-- Phone -->
               <div class="flex items-start gap-4">
                 <Phone class="w-6 h-6 text-primary flex-shrink-0" />
                 <div>

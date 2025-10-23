@@ -326,7 +326,6 @@ const courseCategories = [
 <template>
   <section id="courses" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4 max-w-7xl">
-      <!-- Key Features Section -->
       <div class="bg-white rounded-lg shadow-sm p-8 mb-12">
         <h3 class="text-xl font-semibold text-gray-900 mb-6">Key Features</h3>
         <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
@@ -341,19 +340,16 @@ const courseCategories = [
         </div>
       </div>
 
-      <!-- Course Categories -->
       <div class="space-y-6">
         <div
           v-for="(category, categoryIndex) in courseCategories"
           :key="categoryIndex"
           class="bg-white rounded-lg shadow-sm overflow-hidden"
         >
-          <!-- Category Header -->
           <div class="bg-primary text-white px-6 py-4">
             <h3 class="text-lg font-semibold">{{ category.title }}</h3>
           </div>
 
-          <!-- Courses List -->
           <div class="divide-y divide-gray-200">
             <div
               v-for="(course, courseIndex) in category.courses"
@@ -383,7 +379,6 @@ const courseCategories = [
         </div>
       </div>
 
-      <!-- CTA Section -->
       <div
         class="bg-primary rounded-lg p-8 lg:p-12 text-white text-center mt-12"
       >

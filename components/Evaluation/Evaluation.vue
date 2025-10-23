@@ -12,7 +12,6 @@ const evaluationQuestions = [
   <section id="evaluation" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <!-- Header -->
         <div class="mb-12">
           <div class="flex items-center justify-center gap-3 mb-6">
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
@@ -31,7 +30,6 @@ const evaluationQuestions = [
           </div>
         </div>
 
-        <!-- Evaluation Questions -->
         <div class="mb-12">
           <ul class="space-y-3">
             <li
@@ -45,7 +43,6 @@ const evaluationQuestions = [
           </ul>
         </div>
 
-        <!-- Process Description -->
         <div class="space-y-6 text-gray-700">
           <p>
             If an attendee chooses to take advantage of our evaluation process, then they
@@ -63,7 +60,6 @@ const evaluationQuestions = [
           </p>
         </div>
 
-        <!-- Info Box -->
         <div class="mt-12 bg-white rounded-xl p-6 border-l-4 border-primary shadow-sm">
           <p class="text-gray-700">
             <span class="font-bold text-primary">Kirkpatrick Level 2</span> evaluation helps
