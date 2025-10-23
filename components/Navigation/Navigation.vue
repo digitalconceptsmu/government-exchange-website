@@ -15,7 +15,7 @@ const navLinks = [
 const coursesDropdown = [
   { name: "Our Courses", href: "/courses" },
   { name: "Upcoming Courses", href: "/courses/upcoming" },
-  { name: "E-learning", href: "/courses/elearning" },
+  { name: "E-learning", href: "/courses/e-learning" },
 ];
 </script>
 

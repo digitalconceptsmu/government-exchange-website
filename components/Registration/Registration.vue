@@ -34,17 +34,16 @@ const handleSubmit = () => {
         <div class="mt-8 text-center text-gray-600">
           <p>
             Questions? Call us at
-            <a href="tel:02031378833" class="text-primary hover:underline"
-              >020 3137 8833</a
-            >
+            <a href="tel:02031378833" class="text-primary hover:underline">020 3137 8833</a>
           </p>
           <p>
             or email
             <a
               href="mailto:enquiry@governmentexchange.co.uk"
               class="text-primary hover:underline"
-              >enquiry@governmentexchange.co.uk</a
             >
+              enquiry@governmentexchange.co.uk
+            </a>
           </p>
         </div>
       </div>

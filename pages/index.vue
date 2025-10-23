@@ -15,8 +15,10 @@ useHead({
     <Navigation />
     <main>
       <Hero />
-      <About />
+      <HeroTitle />
+      <Features />
       <TrainingCategories />
+      <BespokeTraining />
       <Testimonials />
     </main>
     <Footer />

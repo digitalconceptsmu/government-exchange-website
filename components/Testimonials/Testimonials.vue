@@ -14,7 +14,7 @@ const testimonials = [
   <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl lg:text-5xl text-gray-900 mb-6">
+        <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
           What Participants Say
         </h2>
         <p class="text-lg text-gray-600">
