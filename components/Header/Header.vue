@@ -15,7 +15,7 @@ const sizeClasses = {
   sm: {
     container: "py-16 items-start px-24",
     title: "text-5xl font-semibold",
-    subtitle: "text-lg w-[600px]",
+    subtitle: "text-lg",
     gap: "gap-4",
   },
   md: {

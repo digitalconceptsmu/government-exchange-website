@@ -1,138 +1,402 @@
 <script setup lang="ts">
-import {
-  ArrowRight,
-  Briefcase,
-  Building2,
-  Calculator,
-  FileText,
-  MessageSquare,
-  Users2,
-} from "lucide-vue-next";
+import { AlertCircle, Calendar, CheckCircle } from "lucide-vue-next";
+import { Button } from "~/components/ui/button";
 
-const categories = [
+const keyFeatures = [
+  "Training and learning days with free core 'Life and Social Competence Framework'",
+  "Expert speakers led by experienced trainers with specialist knowledge",
+  "Courses are highly interactive, requiring you engage with the issues throughout the day",
+  "For an extra cost you receive one to one coaching, enabling you to improve the increase in your knowledge and skills resulting from the training (Education Plus 1 or 2)",
+  "Up to 24 hours supplementary reading resources",
+  "Learning is relevant, timely and immediately applicable",
+  "Courses speakers include senior MPs, Lords and Government officials",
+  "All our courses offer Certificate of Personal Development and gain a thorough understanding",
+  "Comprehensive reading resources",
+];
+
+const courseCategories = [
   {
-    icon: Building2,
     title: "Parliament, Government & Resilience Skills",
-    description:
-      "A comprehensive guide to all things Parliamentary, the structure and workings of Government, and the EU",
-    color: "bg-blue-500",
+    courses: [
+      {
+        name: "Parliamentary Questions Workshop",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Briefing Ministers and Officials",
+        date: "11th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Understanding the European Drugs & Sales Act of 2020",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Understanding Devolution",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Political Awareness",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Parliamentary Process",
+        date: "11th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "The Role of Select Committees (including with the Clerk of the Welsh Affairs Select Committee)",
+        date: "4th December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Government, Opposition Policy, Ministers with Special Interests",
+        date: "4th December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Artificial Intelligence and Its Impact on Public Service Transformation",
+        date: null,
+        status: "No events currently planned",
+      },
+    ],
   },
   {
-    icon: FileText,
     title: "Policy, Strategy & Writing Skills",
-    description:
-      "Develop essential skills in policy development and delivery, briefing, negotiating, strategic thinking and effective writing",
-    color: "bg-green-500",
+    courses: [
+      {
+        name: "Policy Development Skills: Framework & Influence",
+        date: "13th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Stakeholder Management",
+        date: "25th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Commissioning & Budgeting",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Commissioning and influencing the wider government eco-system in the Public Sector",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Policy Masterclass (Business Interests and the Public Sector",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Principles of Public Sector Contracting",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Principles of Public Advice, Supervision & Handling Casework",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Innovative Contracting",
+        date: "20th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Understanding Devolution: The Public Sector",
+        date: "28th October 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Safeguarding Engagement for the Public Sector",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Policy Responses",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Principles of Public Advice, Supervision & Handling Casework",
+        date: null,
+        status: "No events currently planned",
+      },
+    ],
   },
   {
-    icon: Calculator,
-    title: "Finance",
-    description:
-      "Understand key accounting principles and develop financial skills including budgeting, profiling, forecasting and managing contracts",
-    color: "bg-purple-500",
-  },
-  {
-    icon: Users2,
     title: "Management Skills",
-    description:
-      "Develop your skills in leading and managing people, performance, projects and change",
-    color: "bg-orange-500",
+    courses: [
+      {
+        name: "Leadership Skills",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Developing Skills",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "People Management for Line Managers",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Coordination in Project Management",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Introduction to Project Management (APM Accredited)",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Introduction to Stakeholder Management",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Improving Change For Public Sector",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Public Sector Equality Duties",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Preventing Corruption in the Public Sector",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Best Practice: Understanding Executive Functions for the Public Sector",
+        date: "9th December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Essential Knowledge: Public Sector Finance & Business Change",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Certificate in Management: Executive Functions",
+        date: null,
+        status: "No events currently planned",
+      },
+    ],
   },
   {
-    icon: Briefcase,
+    title: "Finance",
+    courses: [
+      {
+        name: "Civil Servants Guide to Finance",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Understanding Business Cases",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Civil Servants Guide to Budgeting",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Introduction to Economics",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Introduction to Economics for the Public Sector",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Understanding Socio-Economics",
+        date: null,
+        status: "No events currently planned",
+      },
+    ],
+  },
+  {
     title: "Organisational & Personal Capability",
-    description:
-      "Workshops designed for assessment centres, interviews, writing CVs, and for leaving the Civil Service",
-    color: "bg-teal-500",
+    courses: [
+      {
+        name: "Applying for Jobs: Interview Skills & CV Writing",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Communication Skills",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Security and Data Protection: Resistance Against Social Engineering",
+        date: "11th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Working Well for New Managers",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Accountability and Governance",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Team Behavior: Promoting Prosocial Behaviors for Control Unit",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "Email and Digital Etiquette",
+        date: "2nd December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Case Behavior - Team Boundaries in an Unethical Digital Environment",
+        date: null,
+        status: "No events currently planned",
+      },
+    ],
   },
   {
-    icon: MessageSquare,
-    title: "Communication & Stakeholder Engagement",
-    description:
-      "Master effective communication strategies, public speaking, media relations, and stakeholder management for the public sector",
-    color: "bg-pink-500",
+    title: "AI Empowerment for the Public Service",
+    courses: [
+      {
+        name: "AI Ethics: Governance & Risk Management",
+        date: "11th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Artificial Intelligence",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "AI Tools & Capabilities and Cases",
+        date: "5th December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "AI Literacy and Applications",
+        date: null,
+        status: "No events currently planned",
+      },
+      {
+        name: "In A Public Service Awareness",
+        date: "9th December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Data and AI Accountability for Public Service",
+        date: "2nd December 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Applied AI Tools for Government",
+        date: "5th November 2025",
+        status: "No events currently planned",
+      },
+      {
+        name: "Understanding Artificial Intelligence Opportunities Service Implementation",
+        date: null,
+        status: "No events currently planned",
+      },
+    ],
   },
 ];
 </script>
 
 <template>
-  <section id="courses" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl lg:text-5xl text-gray-900 mb-6">Our Courses</h2>
-        <p class="text-lg text-gray-600">
-          Explore our comprehensive range of professional development courses
-          designed specifically for civil servants and public sector
-          professionals
-        </p>
+  <section id="courses" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <!-- Key Features Section -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-12">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6">Key Features</h3>
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+          <div
+            v-for="(feature, index) in keyFeatures"
+            :key="index"
+            class="flex gap-3 items-start"
+          >
+            <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+            <p class="text-sm text-gray-700">{{ feature }}</p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        <Card
-          v-for="(category, index) in categories"
-          :key="index"
-          class="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-gray-100 border-2 rounded-xl py-4 px-6 flex flex-col items-start justify-center gap-4"
+      <!-- Course Categories -->
+      <div class="space-y-6">
+        <div
+          v-for="(category, categoryIndex) in courseCategories"
+          :key="categoryIndex"
+          class="bg-white rounded-lg shadow-sm overflow-hidden"
         >
-          <CardHeader>
+          <!-- Category Header -->
+          <div class="bg-primary text-white px-6 py-4">
+            <h3 class="text-lg font-semibold">{{ category.title }}</h3>
+          </div>
+
+          <!-- Courses List -->
+          <div class="divide-y divide-gray-200">
             <div
-              :class="`w-14 h-14 ${category.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`"
+              v-for="(course, courseIndex) in category.courses"
+              :key="courseIndex"
+              class="px-6 py-4 hover:bg-gray-50 transition-colors"
             >
-              <component :is="category.icon" class="w-7 h-7 text-white" />
+              <div class="flex justify-between items-start gap-4">
+                <div class="flex-1">
+                  <h4 class="text-gray-900 font-medium mb-1">
+                    {{ course.name }}
+                  </h4>
+                  <div
+                    v-if="course.date"
+                    class="flex items-center gap-2 text-sm text-gray-600"
+                  >
+                    <Calendar class="w-4 h-4" />
+                    <span>{{ course.date }}</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                  <AlertCircle class="w-4 h-4" />
+                  <span>{{ course.status }}</span>
+                </div>
+              </div>
             </div>
-            <CardTitle
-              class="text-xl group-hover:text-primary transition-colors"
-            >
-              {{ category.title }}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription class="text-gray-600 mb-6">
-              {{ category.description }}
-            </CardDescription>
-            <Button
-              variant="ghost"
-              class="text-primary text-sm mt-8 hover:text-primary/90 hover:bg-primary/5 p-0 h-auto group/btn flex items-center"
-            >
-              Learn More
-              <ArrowRight
-                class="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform"
-              />
-            </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
 
-      <div class="bg-primary rounded-2xl p-8 lg:p-12 text-white">
-        <div class="grid lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 class="text-2xl lg:text-3xl mb-4">Need Bespoke Training?</h3>
-            <p class="text-white/90 mb-6">
-              We offer customized training solutions tailored to your
-              organization's specific needs. Available UK-wide and
-              internationally.
-            </p>
-            <Button
-              size="lg"
-              class="bg-white text-primary hover:bg-gray-100 flex items-center py-2 px-4 rounded-lg"
-            >
-              Request Bespoke Training
-              <ArrowRight class="ml-2 w-5 h-5" />
-            </Button>
-          </div>
-          <div class="space-y-4">
-            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h4 class="mb-2">Flexible Delivery</h4>
-              <p class="text-sm text-white/80">
-                In-person, virtual, or hybrid training options
-              </p>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h4 class="mb-2">Expert Facilitation</h4>
-              <p class="text-sm text-white/80">
-                Delivered by experienced sector specialists
-              </p>
-            </div>
-          </div>
+      <!-- CTA Section -->
+      <div
+        class="bg-primary rounded-lg p-8 lg:p-12 text-white text-center mt-12"
+      >
+        <h3 class="text-2xl lg:text-3xl font-semibold mb-4">
+          Interested in Our Courses?
+        </h3>
+        <p class="text-white/90 mb-8 max-w-2xl mx-auto">
+          Contact us to learn more about upcoming course dates and how we can
+          support your professional development needs.
+        </p>
+        <div class="flex gap-4 justify-center">
+          <Button size="xl" variant="light">Email Us</Button>
+          <Button size="xl" variant="outline"> Call Us </Button>
         </div>
       </div>
     </div>

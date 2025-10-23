@@ -1,145 +1,222 @@
 <script setup lang="ts">
-import { CheckCircle, Mail } from 'lucide-vue-next';
+import {
+  Award,
+  BookOpen,
+  Building,
+  CheckCircle,
+  Target,
+} from "lucide-vue-next";
 
 const benefits = [
-  'Flexibility to arrange your training at convenient times for you and your workforce',
-  'Cost effective prices, giving you the opportunity to invest in developing your talent',
-  'Training delivery at premises that suit you – on site training can reduce time and costs associated with travel'
-]
+  "Flexibility to arrange your training at convenient times for you and your workforce",
+  "Cost effective prices, giving you the opportunity to invest in developing your talent",
+  "Training delivery at premises that suit you – on site training can reduce time and costs associated with travel",
+];
 
 const trainingAreas = [
-  'Parliamentary process',
-  'Legislation',
-  'Government structure',
-  'Strategy',
-  'Writing Skills',
-  'Policy skills',
-  'Leadership & management',
-  'PPM',
-  'Communication'
-]
+  { column1: "Parliamentary process", column2: "Legislation" },
+  { column1: "Government structure", column2: "Strategy" },
+  { column1: "Writing Skills", column2: "Policy skills" },
+  { column1: "Leadership & management", column2: "PPM" },
+  { column1: "Communication", column2: "" },
+];
+
+const clients = [
+  "BTEC",
+  "DfE",
+  "IPO",
+  "ECC",
+  "MAG",
+  "Ofgem",
+  "Home Office",
+  "MoJ",
+  "DoH",
+  "DCSF",
+  "Defra",
+  "SCC",
+  "BBSRC",
+  "WBC",
+  "CA HPW",
+  "Ofcom",
+  "Herbert Smith",
+];
 </script>
 
 <template>
-  <section id="bespoke" class="py-20 bg-white">
+  <section id="bespoke" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <!-- Header -->
-        <div class="mb-12 w-full flex items-center flex-col">
-          <h2 class="text-3xl lg:text-5xl text-gray-900 mb-6">
-            Bespoke Training Solutions
-          </h2>
-
-          <div class="space-y-4 text-gray-700">
-            <p>
-              Our highly popular and successful open courses are ideal for meeting the
-              training and development needs of individuals within the workforce.
-            </p>
-
+      <div class="grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
+        <!-- Left Column - Main Content -->
+        <div class="lg:col-span-8">
+          <div class="space-y-6 text-gray-700 leading-relaxed">
             <p>
               Bespoke training provides added value where there is an
-              <span class="font-bold">organisational need</span> for improved performance
-              or greater impact. We design the training with you so that it fits directly
-              with your organisations specifications, ensuring that the newly learned skills
-              are directly transferable into your work place and that participants are trained
-              in your unique rules, policies, systems and procedures so they can have immediate
-              impact following their training.
+              organisational need for improved performance or greater impact. We
+              design the training with you so that it fits entirely around your
+              organisations specifications, ensuring that the newly learned
+              skills are directly transferable into your work place and that
+              participants are familiar with your internal, policies, systems
+              and procedures so they can have immediate impact following their
+              training.
             </p>
 
             <p>
-              Our trainers will work with you to ensure that the training is practical,
-              interactive and engaging; fully utilising the Kolb learning cycle.
+              Our trainers will work with you to ensure that the training is
+              practical, interactive and engaging; fully utilising the Kolb
+              learning cycle.
             </p>
 
             <p>
-              A better skilled and more knowledgeable workforce will increase organisational
-              performance, this will be further enhanced by increased team and collaborative
-              working which is developed through the shared learning experience which
-              organisational based learning brings.
+              A better skilled and more knowledgeable workforce will increase
+              organisational performance; this will be further enhanced by
+              increased team and collaborative working which is developed
+              through the shared learning experience which organisation based
+              learning brings.
             </p>
+          </div>
+
+          <!-- Benefits Section -->
+          <div
+            class="mt-12 bg-white shadow-sm border-gray-100 border-2 rounded-xl p-8"
+          >
+            <div class="flex items-start gap-4 mb-6">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <Target class="w-6 h-6 text-primary" />
+              </div>
+              <h3 class="text-2xl text-gray-900 mt-2">
+                Your organisation can also benefit from:
+              </h3>
+            </div>
+
+            <ul class="space-y-3">
+              <li
+                v-for="(benefit, index) in benefits"
+                :key="index"
+                class="flex items-start gap-3"
+              >
+                <CheckCircle
+                  class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                />
+                <span class="text-gray-700">{{ benefit }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Training Areas Section -->
+          <div class="mt-12 rounded-lg p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <BookOpen class="w-6 h-6 text-primary" />
+              </div>
+              <h3 class="text-2xl text-gray-900 mt-2">
+                Government Exchange offers high quality bespoke training in:
+              </h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+              <template v-for="(area, index) in trainingAreas" :key="index">
+                <div
+                  class="flex items-center gap-2 bg-white shadow-md shadow-gray-200 rounded-xl p-4"
+                >
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <span class="text-gray-700">{{ area.column1 }}</span>
+                </div>
+                <div
+                  v-if="area.column2"
+                  class="flex items-center gap-2 bg-white shadow-md shadow-gray-200 rounded-xl p-4"
+                >
+                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <span class="text-gray-700">{{ area.column2 }}</span>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <!-- Partnership & Accreditation Section -->
+          <div class="mt-12 border-2 border-primary rounded-lg p-8 space-y-6">
+            <p class="text-gray-700">
+              We can also provide training on any current public policy issue in
+              partnership with our sister organisation
+              <a
+                href="https://publicpolicyexchange.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary hover:underline font-medium"
+                >Public Policy Exchange</a
+              >.
+            </p>
+
+            <p class="text-gray-700">
+              All our bespoke training is CPD accredited. The training can
+              either be held at your organisation's premises, or at one of our
+              own high quality training centres.
+            </p>
+
+            <p class="text-gray-700">
+              Our training development team possess many years experience of
+              developing tailor made courses to the highest possible standard,
+              and would be more than happy to discuss any training needs that
+              you have. Please email
+              <a
+                href="mailto:enquiry@governmentexchange.org"
+                class="text-primary hover:underline font-medium"
+                >enquiry@governmentexchange.org</a
+              >
+            </p>
+          </div>
+
+          <!-- CPD Accreditation Badge -->
+          <div
+            class="mt-12 bg-white border border-gray-200 rounded-lg p-6 flex items-start gap-6"
+          >
+            <div
+              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <Award class="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">
+                CPD Accredited Training
+              </h4>
+              <p class="text-gray-700">
+                All our bespoke training programmes are CPD accredited, ensuring
+                the highest standards of professional development.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Benefits Section -->
-        <div class="mb-12">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">
-            You organisation can also benefit from:
-          </h3>
+        <!-- Right Column - Sidebar -->
+        <div class="lg:col-span-4">
+          <div class="bg-white border-2 rounded-xl p-8 sticky top-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"
+              >
+                <Building class="w-5 h-5 text-primary" />
+              </div>
+              <h3 class="text-xl text-gray-900">Who We've Worked With</h3>
+            </div>
 
-          <ul class="space-y-3">
-            <li
-              v-for="(benefit, index) in benefits"
-              :key="index"
-              class="flex items-start gap-3"
-            >
-              <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-              <span class="text-gray-700">{{ benefit }}</span>
-            </li>
-          </ul>
-        </div>
+            <p class="text-gray-600 mb-6">
+              Some of the organisations we have recently provided bespoke
+              training for are:
+            </p>
 
-        <!-- Training Areas Section -->
-        <div class="mb-12">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">
-            Government Exchange offers high quality bespoke training in:
-          </h3>
-
-          <ul class="space-y-2">
-            <li
-              v-for="(area, index) in trainingAreas"
-              :key="index"
-              class="flex items-start gap-3"
-            >
-              <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span class="text-gray-700">{{ area }}</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Partnership Section -->
-        <div class="mb-12">
-          <p class="text-gray-700">
-            We can also provide training on any current public policy issue in partnership
-            with our sister organisation
-            <a
-              href="https://publicpolicyexchange.co.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-primary hover:underline font-medium"
-            >
-              Public Policy Exchange
-            </a>.
-          </p>
-        </div>
-
-        <!-- Accreditation Section -->
-        <div class="mb-12">
-          <p class="text-gray-700">
-            All our bespoke training is
-            <a
-              href="#"
-              class="text-primary hover:underline font-medium"
-            >
-              CPD accredited
-            </a>. The training can either be held at your organisation's premises,
-            or at one of our own high quality training venues.
-          </p>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="bg-gray-50 rounded-xl p-8">
-          <p class="text-gray-700 mb-4">
-            Our training development team possess many years experience of developing tailor
-            made courses to the highest possible standard, and would be more than happy to
-            discuss any training needs that you have. Please email
-            <a
-              href="mailto:Enquiry@governmentexchange.co.uk"
-              class="text-primary hover:underline font-medium inline-flex items-center gap-1"
-            >
-              <Mail class="w-4 h-4" />
-              Enquiry@governmentexchange.co.uk
-            </a>
-          </p>
+            <div class="space-y-3">
+              <div
+                v-for="(client, index) in clients"
+                :key="index"
+                class="bg-gray-50 rounded-lg px-4 py-4 text-center text-gray-700 font-medium hover:bg-gray-100 hover:shadow-sm transition-all"
+              >
+                {{ client }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
