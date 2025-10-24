@@ -86,7 +86,7 @@ const testimonials = [
   <div id="about">
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
-        <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="grid lg:grid-cols-2 gap-36 items-start">
           <div class="space-y-6">
             <p class="text-gray-700 leading-relaxed">
               Government Exchange is the training division of the Centre for
@@ -130,12 +130,12 @@ const testimonials = [
             </p>
           </div>
 
-          <div class="lg:sticky lg:top-8">
-            <!-- <img
-              src="/images/government-exchange-brochure.jpg"
+          <div class="lg:top-8">
+            <img
+              src="../../public/images/westminster1.jpg"
               alt="Government Exchange Brochure"
-              class="w-full rounded-lg shadow-lg"
-            /> -->
+              class="w-96 rounded-lg shadow-lg"
+            />
           </div>
         </div>
       </div>
