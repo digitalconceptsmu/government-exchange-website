@@ -83,21 +83,23 @@ const currentCourses = computed(() => {
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-7xl mx-auto">
-        <div class="flex gap-4 mb-12 border-b border-gray-200">
-          <button
-            v-for="tab in tabs"
-            :key="tab.id"
-            @click="activeTab = tab.id"
-            :class="[
-              'px-6 py-3 font-medium text-sm transition-colors relative',
-              activeTab === tab.id
-                ? 'text-gray-900 border-b-2 border-gray-900'
+        <div class="flex gap-4 mb-8 border-b pb-8 justify-center border-gray-200">
+          <div class="border-b">
+            <button
+              v-for="tab in tabs"
+              :key="tab.id"
+              @click="activeTab = tab.id"
+              :class="[
+                'px-6 py-3 font-medium text-sm transition-colors relative',
+                activeTab === tab.id
+                ? 'text-primary border-b-2 border-primary'
                 : 'text-gray-500 hover:text-gray-700',
-            ]"
-          >
+              ]"
+            >
             {{ tab.label }}
           </button>
         </div>
+      </div>
 
         <div class="mb-12 max-w-4xl">
           <p class="text-gray-700 mb-4">
