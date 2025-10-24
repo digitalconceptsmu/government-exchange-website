@@ -155,10 +155,10 @@ const testimonials = [
           <div
             v-for="(value, index) in values"
             :key="index"
-            class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+            class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
           >
             <div
-              class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto"
+              class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
             >
               <component :is="value.icon" class="w-7 h-7 text-primary" />
             </div>
