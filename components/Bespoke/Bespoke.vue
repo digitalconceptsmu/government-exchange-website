@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import {
-  Award,
   BookOpen,
   Building,
   CheckCircle,
-  Target,
+  Target
 } from "lucide-vue-next";
 
 const benefits = [
@@ -167,25 +166,6 @@ const clients = [
                 >enquiry@governmentexchange.org</a
               >
             </p>
-          </div>
-
-          <div
-            class="mt-12 bg-white border border-gray-200 rounded-lg p-6 flex items-start gap-6"
-          >
-            <div
-              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center flex-shrink-0"
-            >
-              <Award class="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <h4 class="text-lg font-semibold text-gray-900 mb-2">
-                CPD Accredited Training
-              </h4>
-              <p class="text-gray-700">
-                All our bespoke training programmes are CPD accredited, ensuring
-                the highest standards of professional development.
-              </p>
-            </div>
           </div>
         </div>
 
