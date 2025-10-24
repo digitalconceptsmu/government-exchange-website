@@ -340,7 +340,7 @@ const courseCategories = [
         </div>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6 items-start">
         <div
           v-for="(category, categoryIndex) in courseCategories"
           :key="categoryIndex"
@@ -369,8 +369,8 @@ const courseCategories = [
                     <span>{{ course.date }}</span>
                   </div>
                 </div>
-                <div class="flex items-center gap-2 text-sm bg-gray-100 py-1 px-2 rounded-lg">
-                  <Clock4 class="w-3 h-3" />
+                <div class="flex items-center w-20 md:w-auto gap-2 text-sm bg-gray-100 py-1 px-2 rounded-lg">
+                  <Clock4 class="w-3 h-3 hidden md:block" />
                   <span class="text-xs">{{ course.status }}</span>
                 </div>
               </div>
