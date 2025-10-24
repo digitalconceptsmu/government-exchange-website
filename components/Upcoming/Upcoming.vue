@@ -70,7 +70,7 @@ const upcomingCourses = {
   <section id="upcoming" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-5xl mx-auto">
-        <div class="bg-white rounded-lg shadow-sm p-8 mb-12">
+        <div class="mb-12">
           <p class="text-gray-700 leading-relaxed">
             The following courses are currently accepting delegate registrations. Click on any course that interest you or your organization for more details.
           </p>
