@@ -40,24 +40,6 @@ const testimonials = [
           </div>
         </div>
       </div>
-
-      <div class="mt-16 text-center">
-        <p class="text-gray-600 mb-6">Join thousands of civil servants who have advanced their careers with us</p>
-        <div class="flex flex-wrap justify-center gap-8 text-center">
-          <div>
-            <div class="text-4xl text-primary mb-2">1000+</div>
-            <div class="text-gray-600">Courses Delivered</div>
-          </div>
-          <div>
-            <div class="text-4xl text-primary mb-2">50+</div>
-            <div class="text-gray-600">Expert Trainers</div>
-          </div>
-          <div>
-            <div class="text-4xl text-primary mb-2">98%</div>
-            <div class="text-gray-600">Satisfaction Rate</div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </template>
