@@ -170,7 +170,7 @@ const clients = [
         </div>
 
         <div class="lg:col-span-4">
-          <div class="bg-white border-2 rounded-xl p-8 sticky top-8">
+          <div class="bg-white border-2 rounded-xl p-8 sticky top-32">
             <div class="flex items-center gap-3 mb-6">
               <div
                 class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"

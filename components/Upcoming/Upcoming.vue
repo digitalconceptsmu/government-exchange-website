@@ -2,11 +2,21 @@
 import { Calendar } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
 
-const upcomingCourses = {
+interface Course {
+  title: string;
+  date: string;
+  slug?: string;
+}
+
+const upcomingCourses: {
+  november: Course[];
+  december: Course[];
+} = {
   november: [
     {
       title: "Professional Certificate in Leadership and Management",
       date: "1st - 6th November 2025",
+      slug: "leadership-and-management",
     },
     {
       title: "Professional Certificate in International Regulatory Affairs",
@@ -90,18 +100,22 @@ const upcomingCourses = {
               :key="index"
               class="border-b border-gray-200 last:border-b-0"
             >
-              <a
-                href="#"
-                class="flex justify-between items-center px-8 py-6 hover:bg-gray-50 transition-colors group"
-              >
-                <h3 class="text-primary group-hover:underline font-medium">
-                  {{ course.title }}
+              <div class="flex justify-between items-center px-8 py-6 hover:bg-gray-50 transition-colors group">
+                <h3 class="font-medium text-gray-900">
+                  <NuxtLink
+                    v-if="course.slug"
+                    :to="`/courses/upcoming/${course.slug}`"
+                    class="hover:underline transition-colors cursor-pointer"
+                  >
+                    {{ course.title }}
+                  </NuxtLink>
+                  <span v-else>{{ course.title }}</span>
                 </h3>
                 <div class="flex items-center gap-2 text-gray-600 text-sm flex-shrink-0 ml-8">
                   <Calendar class="w-4 h-4" />
                   <span>{{ course.date }}</span>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -120,18 +134,22 @@ const upcomingCourses = {
               :key="index"
               class="border-b border-gray-200 last:border-b-0"
             >
-              <a
-                href="#"
-                class="flex justify-between items-center px-8 py-6 hover:bg-gray-50 transition-colors group"
-              >
-                <h3 class="text-primary group-hover:underline font-medium">
-                  {{ course.title }}
+              <div class="flex justify-between items-center px-8 py-6 hover:bg-gray-50 transition-colors group">
+                <h3 class="font-medium text-gray-900">
+                  <NuxtLink
+                    v-if="course.slug"
+                    :to="`/courses/upcoming/${course.slug}`"
+                    class="hover:underline transition-colors cursor-pointer"
+                  >
+                    {{ course.title }}
+                  </NuxtLink>
+                  <span v-else>{{ course.title }}</span>
                 </h3>
                 <div class="flex items-center gap-2 text-gray-600 text-sm flex-shrink-0 ml-8">
                   <Calendar class="w-4 h-4" />
                   <span>{{ course.date }}</span>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </div>

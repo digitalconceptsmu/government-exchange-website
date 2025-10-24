@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Calendar, CheckCircle, Clock4 } from "lucide-vue-next";
+import { CheckCircle } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
 
 const keyFeatures = [
@@ -21,47 +21,39 @@ const courseCategories = [
       {
         name: "Parliamentary Questions Workshop",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Briefing Ministers and Officials",
         date: "11th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Understanding the European Drugs & Sales Act of 2020",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Understanding Devolution",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Political Awareness",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Parliamentary Process",
         date: "11th November 2025",
-        status: "No events currently planned",
+        slug: "parliamentary-process",
       },
       {
         name: "The Role of Select Committees (including with the Clerk of the Welsh Affairs Select Committee)",
         date: "4th December 2025",
-        status: "No events currently planned",
       },
       {
         name: "Government, Opposition Policy, Ministers with Special Interests",
         date: "4th December 2025",
-        status: "No events currently planned",
       },
       {
         name: "Artificial Intelligence and Its Impact on Public Service Transformation",
         date: null,
-        status: "No events currently planned",
       },
     ],
   },
@@ -71,62 +63,50 @@ const courseCategories = [
       {
         name: "Policy Development Skills: Framework & Influence",
         date: "13th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Stakeholder Management",
         date: "25th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Commissioning & Budgeting",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Commissioning and influencing the wider government eco-system in the Public Sector",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Policy Masterclass (Business Interests and the Public Sector",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Principles of Public Sector Contracting",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Principles of Public Advice, Supervision & Handling Casework",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Innovative Contracting",
         date: "20th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Understanding Devolution: The Public Sector",
         date: "28th October 2025",
-        status: "No events currently planned",
       },
       {
         name: "Safeguarding Engagement for the Public Sector",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Policy Responses",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Principles of Public Advice, Supervision & Handling Casework",
         date: null,
-        status: "No events currently planned",
       },
     ],
   },
@@ -136,62 +116,50 @@ const courseCategories = [
       {
         name: "Leadership Skills",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Developing Skills",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "People Management for Line Managers",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Coordination in Project Management",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Introduction to Project Management (APM Accredited)",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Introduction to Stakeholder Management",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Improving Change For Public Sector",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Public Sector Equality Duties",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Preventing Corruption in the Public Sector",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Best Practice: Understanding Executive Functions for the Public Sector",
         date: "9th December 2025",
-        status: "No events currently planned",
       },
       {
         name: "Essential Knowledge: Public Sector Finance & Business Change",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Certificate in Management: Executive Functions",
         date: null,
-        status: "No events currently planned",
       },
     ],
   },
@@ -201,32 +169,26 @@ const courseCategories = [
       {
         name: "Civil Servants Guide to Finance",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Understanding Business Cases",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Civil Servants Guide to Budgeting",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Introduction to Economics",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Introduction to Economics for the Public Sector",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Understanding Socio-Economics",
         date: null,
-        status: "No events currently planned",
       },
     ],
   },
@@ -236,42 +198,34 @@ const courseCategories = [
       {
         name: "Applying for Jobs: Interview Skills & CV Writing",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Communication Skills",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Security and Data Protection: Resistance Against Social Engineering",
         date: "11th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Working Well for New Managers",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Accountability and Governance",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Team Behavior: Promoting Prosocial Behaviors for Control Unit",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "Email and Digital Etiquette",
         date: "2nd December 2025",
-        status: "No events currently planned",
       },
       {
         name: "Case Behavior - Team Boundaries in an Unethical Digital Environment",
         date: null,
-        status: "No events currently planned",
       },
     ],
   },
@@ -281,42 +235,34 @@ const courseCategories = [
       {
         name: "AI Ethics: Governance & Risk Management",
         date: "11th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Artificial Intelligence",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "AI Tools & Capabilities and Cases",
         date: "5th December 2025",
-        status: "No events currently planned",
       },
       {
         name: "AI Literacy and Applications",
         date: null,
-        status: "No events currently planned",
       },
       {
         name: "In A Public Service Awareness",
         date: "9th December 2025",
-        status: "No events currently planned",
       },
       {
         name: "Data and AI Accountability for Public Service",
         date: "2nd December 2025",
-        status: "No events currently planned",
       },
       {
         name: "Applied AI Tools for Government",
         date: "5th November 2025",
-        status: "No events currently planned",
       },
       {
         name: "Understanding Artificial Intelligence Opportunities Service Implementation",
         date: null,
-        status: "No events currently planned",
       },
     ],
   },
@@ -359,19 +305,19 @@ const courseCategories = [
               <div class="flex justify-between items-start gap-4">
                 <div class="flex-1">
                   <h4 class="text-gray-900 font-medium mb-1">
-                    {{ course.name }}
+                    <NuxtLink
+                      v-if="course.slug"
+                      :to="`/courses/${course.slug}`"
+                      class="hover:underline transition-colors cursor-pointer"
+                    >
+                      {{ course.name }}
+                    </NuxtLink>
+                    <span v-else>{{ course.name }}</span>
                   </h4>
-                  <div
-                    v-if="course.date"
-                    class="flex items-center gap-2 text-sm text-gray-600"
-                  >
-                    <Calendar class="w-4 h-4" />
-                    <span>{{ course.date }}</span>
+                  <div class="flex items-center gap-2 text-sm text-gray-600">
+                    <span v-if="course.date">{{ course.date }}</span>
+                    <span v-else class="text-gray-500">No events currently planned</span>
                   </div>
-                </div>
-                <div class="flex items-center w-20 md:w-auto gap-2 text-sm bg-gray-100 py-1 px-2 rounded-lg">
-                  <Clock4 class="w-3 h-3 hidden md:block" />
-                  <span class="text-xs">{{ course.status }}</span>
                 </div>
               </div>
             </div>

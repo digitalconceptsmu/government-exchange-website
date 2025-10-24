@@ -2,6 +2,13 @@
 import { ref } from "vue";
 import CourseCard from "./CourseCard.vue";
 
+interface Course {
+  title: string;
+  description: string;
+  image: string;
+  slug?: string;
+}
+
 const activeTab = ref("all");
 
 const tabs = [
@@ -10,7 +17,14 @@ const tabs = [
   { id: "individual", label: "INDIVIDUAL COURSES" },
 ];
 
-const allCourses = [
+const allCourses: Course[] = [
+  {
+    title: "The Successful Managers Toolkits for the Public Service",
+    description:
+      "Comprehensive toolkit for managers in public service to enhance leadership and operational effectiveness.",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+    slug: "successful-managers-toolkit",
+  },
   {
     title: "The Essentials of Managing Equality for the Public Service",
     description:
@@ -37,7 +51,14 @@ const allCourses = [
   },
 ];
 
-const suites = [
+const suites: Course[] = [
+  {
+    title: "The Successful Managers Toolkits for the Public Service",
+    description:
+      "Comprehensive toolkit for managers in public service to enhance leadership and operational effectiveness.",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+    slug: "successful-managers-toolkit",
+  },
   {
     title: "The Essentials of Managing Equality for the Public Service",
     description:
@@ -52,7 +73,7 @@ const suites = [
   },
 ];
 
-const individualCourses = [
+const individualCourses: Course[] = [
   {
     title: "Effective Writing Skills for the Public Service",
     description:
@@ -117,6 +138,7 @@ const currentCourses = computed(() => {
             :title="course.title"
             :description="course.description"
             :image="course.image"
+            :slug="course.slug"
           />
         </div>
       </div>

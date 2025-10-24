@@ -5,6 +5,7 @@ interface Props {
   title: string;
   description: string;
   image: string;
+  slug?: string;
 }
 
 defineProps<Props>();
@@ -27,13 +28,21 @@ defineProps<Props>();
       <p class="text-gray-600 text-sm mb-6">
         {{ description }}
       </p>
-      <a
-        href="#"
-        class="text-primary text-sm font-medium inline-flex items-center hover:underline group"
+      <NuxtLink
+        v-if="slug"
+        :to="`/courses/e-learning/${slug}`"
+        class="text-primary text-sm font-medium inline-flex items-center hover:underline group cursor-pointer"
       >
         Read more
         <ArrowRight class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-      </a>
+      </NuxtLink>
+      <span
+        v-else
+        class="text-gray-400 text-sm font-medium inline-flex items-center cursor-not-allowed"
+      >
+        Read more
+        <ArrowRight class="ml-2 w-4 h-4" />
+      </span>
     </div>
   </div>
 </template>
