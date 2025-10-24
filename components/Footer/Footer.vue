@@ -38,18 +38,18 @@ const policies = [
           </p>
           <div class="space-y-3">
             <a
-              href="tel:02031378833"
+              href="tel:02031378632"
               class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
             >
               <Phone class="w-5 h-5" />
-              <span>020 3137 8833</span>
+              <span>020 3137 8632</span>
             </a>
             <a
-              href="mailto:enquiry@governmentexchange.co.uk"
+              href="mailto:enquiry@governmentexchange.org"
               class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
             >
               <Mail class="w-5 h-5" />
-              <span>enquiry@governmentexchange.co.uk</span>
+              <span>enquiry@governmentexchange.org</span>
             </a>
             <div class="flex items-start gap-3 text-gray-300">
               <MapPin class="w-5 h-5 mt-1 flex-shrink-0" />
