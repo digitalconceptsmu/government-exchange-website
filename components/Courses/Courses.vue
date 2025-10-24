@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertCircle, Calendar, CheckCircle } from "lucide-vue-next";
+import { Calendar, CheckCircle, Clock4 } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
 
 const keyFeatures = [
@@ -369,9 +369,9 @@ const courseCategories = [
                     <span>{{ course.date }}</span>
                   </div>
                 </div>
-                <div class="flex items-center gap-2 text-sm text-gray-500">
-                  <AlertCircle class="w-4 h-4" />
-                  <span>{{ course.status }}</span>
+                <div class="flex items-center gap-2 text-sm bg-gray-100 py-1 px-2 rounded-lg">
+                  <Clock4 class="w-3 h-3" />
+                  <span class="text-xs">{{ course.status }}</span>
                 </div>
               </div>
             </div>

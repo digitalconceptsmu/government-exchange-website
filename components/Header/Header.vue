@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const sizeClasses = {
   sm: {
-    container: "py-16 items-start px-24",
+    container: "py-16 items-start px-4 lg:px-24",
     title: "text-5xl font-semibold",
     subtitle: "text-lg",
     gap: "gap-4",
