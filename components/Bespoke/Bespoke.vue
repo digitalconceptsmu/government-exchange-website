@@ -102,7 +102,7 @@ const clients = [
             </ul>
           </div>
 
-          <div class="mt-12 rounded-lg p-8">
+          <div class="mt-12 p-8 bg-white shadow-sm border-gray-100 border-2 rounded-xl">
             <div class="flex items-start gap-4 mb-6">
               <div
                 class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0"
@@ -117,16 +117,20 @@ const clients = [
             <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
               <template v-for="(area, index) in trainingAreas" :key="index">
                 <div
-                  class="flex items-center gap-2 bg-white shadow-md shadow-gray-200 rounded-xl p-4"
+                  class="flex items-center gap-2 rounded-xl p-4 bg-gray-50"
                 >
-                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <CheckCircle
+                    class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                  />
                   <span class="text-gray-700">{{ area.column1 }}</span>
                 </div>
                 <div
                   v-if="area.column2"
-                  class="flex items-center gap-2 bg-white shadow-md shadow-gray-200 rounded-xl p-4"
+                  class="flex items-center gap-2 rounded-xl p-4 bg-gray-50"
                 >
-                  <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  <CheckCircle
+                    class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                  />
                   <span class="text-gray-700">{{ area.column2 }}</span>
                 </div>
               </template>
