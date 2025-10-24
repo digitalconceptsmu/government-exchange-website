@@ -39,20 +39,21 @@ const handleMouseLeave = () => {
     <div class="bg-primary text-white">
       <div class="container mx-auto px-4 py-2">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-6">
+          <div class="flex items-center gap-5">
             <a
-              href="tel:02031378833"
+              href="tel:02031378632"
               class="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <Phone class="w-4 h-4" />
-              <span class="text-sm">020 3137 8833</span>
+              <span class="text-sm">020 3137 8632</span>
             </a>
+            <div class="w-[.5px] h-5 bg-white"></div>
             <a
-              href="mailto:enquiry@governmentexchange.co.uk"
+              href="mailto:enquiry@governmentexchange.org"
               class="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <Mail class="w-4 h-4" />
-              <span class="text-sm">enquiry@governmentexchange.co.uk</span>
+              <span class="text-sm">enquiry@governmentexchange.org</span>
             </a>
           </div>
         </div>
