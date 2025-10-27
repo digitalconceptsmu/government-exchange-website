@@ -1,9 +1,85 @@
 <script setup lang="ts">
 import { ArrowDownToLine, CheckCircle, FileText, MapPin } from "lucide-vue-next";
+import { ref } from "vue";
 import { Button } from "~/components/ui/button";
 
 const route = useRoute();
 const slug = route.params.slug;
+
+const videoRef = ref<HTMLVideoElement | null>(null);
+const isPlaying = ref(false);
+const isMuted = ref(false);
+const currentTime = ref(0);
+const duration = ref(0);
+const isFullscreen = ref(false);
+const showControls = ref(true);
+let controlsTimeout: ReturnType<typeof setTimeout> | null = null;
+
+const togglePlay = () => {
+  if (!videoRef.value) return;
+
+  if (isPlaying.value) {
+    videoRef.value.pause();
+  } else {
+    videoRef.value.play();
+  }
+  isPlaying.value = !isPlaying.value;
+};
+
+const toggleMute = () => {
+  if (!videoRef.value) return;
+  videoRef.value.muted = !videoRef.value.muted;
+  isMuted.value = videoRef.value.muted;
+};
+
+const toggleFullscreen = () => {
+  if (!videoRef.value) return;
+
+  const videoContainer = videoRef.value.parentElement;
+  if (!videoContainer) return;
+
+  if (!document.fullscreenElement) {
+    videoContainer.requestFullscreen();
+    isFullscreen.value = true;
+  } else {
+    document.exitFullscreen();
+    isFullscreen.value = false;
+  }
+};
+
+const updateTime = () => {
+  if (!videoRef.value) return;
+  currentTime.value = videoRef.value.currentTime;
+  duration.value = videoRef.value.duration;
+};
+
+const seek = (event: MouseEvent) => {
+  if (!videoRef.value) return;
+  const progressBar = event.currentTarget as HTMLElement;
+  const clickX = event.offsetX;
+  const width = progressBar.offsetWidth;
+  const newTime = (clickX / width) * duration.value;
+  videoRef.value.currentTime = newTime;
+};
+
+const formatTime = (seconds: number) => {
+  if (isNaN(seconds)) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+};
+
+const handleMouseMove = () => {
+  showControls.value = true;
+  if (controlsTimeout) {
+    clearTimeout(controlsTimeout);
+  }
+  controlsTimeout = setTimeout(() => {
+    if (isPlaying.value) {
+      showControls.value = false;
+    }
+  }, 2000);
+};
 
 const courseData: Record<string, any> = {
   "parliamentary-process": {
@@ -11,19 +87,18 @@ const courseData: Record<string, any> = {
     type: "1 day (November 2025)",
     venue: "Virtual Learning",
     registrationForm: "#",
-    description:
-      "Government Exchange is excited to present an immersive and hands-on online short course attending to the Parliamentary Process. Allowing you to familiarise with the machinery of Parliament and interact with and distinguishes Members of the House of Lords.",
-    overview:
+    description: [
+      "Government Exchange is excited to present an immersive and hands-on online short course attending to the Parliamentary Process. Allowing you to familiarise with the machinery of Parliament and interact with and distinguishes Members of the House of Lords."
+    ],
+    overview: [
       "The workshop is designed so that you get a clear understanding of the process involved in passing legislation through the UK Parliament. The priority is on with a real-world understanding of how Parliament actually operates. We will bring you the various stages including formal discussions, debates as well as the implications of the Royal Assent. Develop skills, such as formulating a policy proposal, processes, and give insights into key facets and noticing solutions to crafting new legislation.",
+    ],
     speakers: [
       {
-        name: "Lord Peter Lilley",
-        title:
-          "Member of the House of Lords & former shadow Chancellor of the Exchequer",
+        name: "Lord Peter Lilley, Member of the House of Lords & former shadow Chancellor of the Exchequer",
       },
       {
         name: "Rt Hon Tam Dalyell MP",
-        title: "",
       },
     ],
     outcomes: [
@@ -121,9 +196,49 @@ const courseData: Record<string, any> = {
       },
       {
         quote:
-          "I would to hear the insider view of making legislative changes. Policy process was delivered by someone with the experience and insight was beautifully helpful.",
-        author: "Policy Officer",
+          "I would to hear the insider view of making legislative changes. Policy process was delivered by someone with the experience and insight was incredibly valuable.",
+        author: "Patrick England",
       },
+      {
+        quote: "Excellent speakers gave us a brilliant workshop today with Lord Lilley.",
+        author: "Professional Office",
+      },
+      {
+        quote: "I got like the learning education and came very impressed with the level of what we have",
+        author: "Public Servant",
+      },
+      {
+        quote: "Impressive session. Really help me understand more other topics to.",
+        author: "Scottish Trainee (Devel)",
+      },
+      {
+        quote: "I am greatly enjoying this and I'm reading at the new and exciting the time looking forward",
+        author: "IPG Nickel",
+      },
+      {
+        quote: "Good experience and interesting walk Litter were Belgium",
+        author: "Brussels Hall",
+      },
+      {
+        quote: "Very useful session.",
+        author: "EEA",
+      },
+    ],
+    accreditation: {
+      title: "Accredited By",
+      logo: "/images/institute-of-leadership.png",
+      description: "The Institute of Leadership has approved this training course. The Institute combines years of research, knowledge and innovation to champion the leadership agenda for aLL and since 1947 they have carried out extensive research into the knowledge, skills, attitudes, behaviours and values of great leadership. Based on The Institute's core leadership values, this course meets the standard that enables learners who have completed to access the following benefits:",
+      benefits: [
+        { text: "Membership of The Institute of Leadership will be in receipt of an ICPS/The Institute joint Certificate of achievement for the course" },
+        { text: "Access to a raft of resources to help you with your continuing professional development, including an award-winning library of e-Learning materials" },
+        { text: "A community of over 70,000 members worldwide enabling you to collaborate and grow your knowledge and skills" },
+        { text: "Receipt of weekly news updates, podcasts and cutting-edge research and a monthly published journal and invitations to topical webinars" },
+        { text: "Authorisation to use approved letters AMInstL (Associate Member of The Institute of Leadership) after your name for business correspondence" },
+      ],
+    },
+    relatedCourses: [
+      { title: "Working With the New Parliament", link: "#" },
+      { title: "How Government Works: the New Coalition", link: "#" },
     ],
   },
 };
@@ -152,182 +267,268 @@ useHead({
   <div class="min-h-screen bg-background bg-gray-50">
     <Navigation />
     <main>
-      <div class="text-white py-16 relative overflow-hidden">
-        <div
-          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style="background-image: url('/images/in_hourse_training.jpg')"
-        ></div>
+      <div>
+        <div class="text-white py-16 relative overflow-hidden">
+          <div
+            class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style="background-image: url('/images/in_hourse_training.jpg')"
+          ></div>
 
-        <div class="absolute inset-0 bg-primary/90"></div>
+          <div class="absolute inset-0 bg-primary/90"></div>
 
-        <div class="container mx-auto px-4 max-w-7xl relative z-10">
-          <div class="mb-4">
-          </div>
-          <NuxtLink
-            to="/courses"
-            class="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2"
-          >
-            ← Back to Courses
-          </NuxtLink>
-          <h1 class="text-4xl lg:text-5xl font-bold">
-            {{ course.title }}
-          </h1>
-        </div>
-      </div>
-
-      <div class="bg-white border-b">
-        <div class="container mx-auto px-4 max-w-7xl py-6">
-          <div class="flex flex-wrap gap-6 text-sm">
-            <div class="flex items-center gap-2">
-              <FileText class="w-5 h-5 text-primary" />
-              <div>
-                <div class="text-gray-600 text-xs">Type</div>
-                <div class="font-medium">{{ course.type }}</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <MapPin class="w-5 h-5 text-primary" />
-              <div>
-                <div class="text-gray-600 text-xs">Venue</div>
-                <div class="font-medium">{{ course.venue }}</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <FileText class="w-5 h-5 text-primary" />
-              <div>
-                <div class="text-primary text-xs hover:underline cursor-pointer">Registration form (doc)</div>
-              </div>
-            </div>
+          <div class="container mx-auto px-4 max-w-7xl relative z-10">
+            <div class="mb-4"></div>
+            <NuxtLink
+              to="/courses"
+              class="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2"
+            >
+              ← Back to Courses
+            </NuxtLink>
+            <h1 class="text-4xl lg:text-5xl font-bold">
+              {{ course.title }}
+            </h1>
           </div>
         </div>
-      </div>
 
-      <div class="container mx-auto px-4 max-w-7xl py-12">
-        <div class="grid lg:grid-cols-3 gap-8">
-          <div class="lg:col-span-2 space-y-8">
-            <section class="bg-white border rounded-xl shadow-sm p-8">
-              <p class="text-gray-700 leading-relaxed mb-6">
-                {{ course.description }}
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                {{ course.overview }}
-              </p>
-            </section>
-
-            <section v-if="course.speakers && course.speakers.length > 0" class="bg-white rounded-xl border shadow-sm p-8">
-              <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-                Distinguished Speakers:
-              </h2>
-              <div class="space-y-4">
-                <div
-                  v-for="(speaker, index) in course.speakers"
-                  :key="index"
-                  class="flex items-start gap-3"
-                >
-                  <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <div class="font-medium text-gray-900">
-                      {{ speaker.name }}
-                    </div>
-                    <div v-if="speaker.title" class="text-sm text-gray-600">
-                      {{ speaker.title }}
-                    </div>
-                  </div>
+        <div class="bg-white border-b">
+          <div class="container mx-auto px-4 max-w-7xl py-6">
+            <div class="flex flex-wrap gap-6 text-sm">
+              <div class="flex items-center gap-2">
+                <FileText class="w-5 h-5 text-primary" />
+                <div>
+                  <div class="text-gray-600 text-xs">Type</div>
+                  <div class="font-medium">{{ course.type }}</div>
                 </div>
               </div>
-            </section>
-
-            <section class="bg-white border rounded-xl shadow-sm p-8">
-              <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-                Learning Outcomes
-              </h2>
-              <div class="space-y-4">
-                <div
-                  v-for="(outcome, index) in course.outcomes"
-                  :key="index"
-                  class="flex items-start gap-3"
-                >
-                  <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <p class="text-gray-700">{{ outcome }}</p>
+              <div class="flex items-center gap-2">
+                <MapPin class="w-5 h-5 text-primary" />
+                <div>
+                  <div class="text-gray-600 text-xs">Venue</div>
+                  <div class="font-medium">{{ course.venue }}</div>
                 </div>
               </div>
-            </section>
-
-            <section class="bg-white border rounded-xl shadow-sm p-8">
-              <h2 class="text-2xl font-semibold text-gray-900 mb-6">Agenda</h2>
-              <div class="space-y-6">
-                <div
-                  v-for="(item, index) in course.agenda"
-                  :key="index"
-                  class="border-l-4 border-primary pl-6 py-2"
-                >
-                  <div class="flex items-center gap-3 mb-2">
-                    <span
-                      class="inline-block px-3 py-1 bg-gray-100 rounded text-sm font-medium"
-                    >
-                      {{ item.time }}
-                    </span>
-                    <h3 class="font-semibold text-gray-900">
-                      {{ item.title }}
-                    </h3>
-                  </div>
-                  <div v-if="item.speaker" class="text-sm italic text-gray-600 mb-2">
-                    {{ item.speaker }}
-                  </div>
-                  <ul v-if="item.topics" class="space-y-1 mt-2">
-                    <li
-                      v-for="(topic, topicIndex) in item.topics"
-                      :key="topicIndex"
-                      class="text-sm text-gray-700 ml-4 list-disc"
-                    >
-                      {{ topic }}
-                    </li>
-                  </ul>
-                </div>
+              <div class="flex items-center gap-2">
+                <Button class="inline-flex items-center gap-2">
+                  <ArrowDownToLine class="w-5 h-5" />
+                  Click for Registration Form
+                </Button>
               </div>
-            </section>
-
-            <section class="rounded-lg p-8 text-white text-center">
-              <Button
-                size="xl"
-                class="inline-flex items-center gap-2"
-              >
-                <ArrowDownToLine class="w-5 h-5" />
-                Download Registration Form
-              </Button>
-            </section>
+            </div>
           </div>
+        </div>
 
-          <div class="lg:col-span-1">
-            <div class="space-y-6 sticky top-32">
-              <div class="bg-white border rounded-xl shadow-sm p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">
-                  What Delegates Say
-                </h3>
+        <div class="container mx-auto px-4 max-w-7xl py-12">
+          <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-8">
+              <section class="bg-white border rounded-xl shadow-sm p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                  Course overview
+                </h2>
+
+                <!-- Description: support string ou array -->
+                <div v-if="Array.isArray(course.description)" class="space-y-4 mb-6">
+                  <p
+                    v-for="(paragraph, index) in course.description"
+                    :key="index"
+                    class="text-gray-700 leading-relaxed"
+                  >
+                    {{ paragraph }}
+                  </p>
+                </div>
+                <p v-else class="text-gray-700 leading-relaxed mb-6">
+                  {{ course.description }}
+                </p>
+
+                <!-- Overview: support string, array, ou HTML -->
+                <div v-if="course.overview">
+                  <div v-if="Array.isArray(course.overview)" class="space-y-4">
+                    <p
+                      v-for="(paragraph, index) in course.overview"
+                      :key="index"
+                      class="text-gray-700 leading-relaxed"
+                    >
+                      {{ paragraph }}
+                    </p>
+                  </div>
+                  <div v-else class="text-gray-700 leading-loose course-overview-content" v-html="course.overview" />
+                </div>
+              </section>
+
+              <section v-if="course.speakers && course.speakers.length > 0" class="bg-white rounded-xl border shadow-sm p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                  Distinguished Speakers:
+                </h2>
                 <div class="space-y-4">
                   <div
-                    v-for="(testimonial, index) in course.testimonials"
+                    v-for="(speaker, index) in course.speakers"
                     :key="index"
-                    class="border-l-4 border-primary pl-4 py-2"
+                    class="flex items-start gap-3"
                   >
-                    <p class="text-sm text-gray-700 italic mb-2">
-                      "{{ testimonial.quote }}"
-                    </p>
-                    <p class="text-xs text-gray-600">— {{ testimonial.author }}</p>
+                    <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <div class="text-gray-900">
+                        {{ speaker.name }}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="rounded-xl border p-6 text-white bg-gradient-to-r from-primary to-green-800">
-                <h3 class="text-xl font-semibold mb-4">Register Interest</h3>
-                <p class="text-white/90 mb-6 text-sm">
-                  Interested in this course? Contact us for upcoming dates and
-                  registration details.
-                </p>
-                <div class="space-y-3">
-                  <Button variant="light" class="w-full">Email Enquiry</Button>
-                  <Button variant="outline" class="w-full text-white border-white hover:bg-white/10">
-                    Call: 020 3137 8632
-                  </Button>
+              </section>
+
+              <section class="bg-white border rounded-xl shadow-sm p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                  Learning Outcomes
+                </h2>
+                <div class="space-y-4">
+                  <div
+                    v-for="(outcome, index) in course.outcomes"
+                    :key="index"
+                    class="flex items-start gap-3"
+                  >
+                    <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <p class="text-gray-700">{{ outcome }}</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="bg-white border rounded-xl shadow-sm p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                  Agenda
+                </h2>
+                <div class="space-y-6">
+                  <div
+                    v-for="(item, index) in course.agenda"
+                    :key="index"
+                    class="border-l-4 border-primary pl-6 py-2"
+                  >
+                    <div class="flex items-center gap-3 mb-2">
+                      <span
+                        class="inline-block px-2 border border-primary text-primary rounded-lg text-sm font-medium"
+                      >
+                        {{ item.time }}
+                      </span>
+                      <h3 class="font-semibold text-gray-900">
+                        {{ item.title }}
+                      </h3>
+                    </div>
+                    <div v-if="item.speaker" class="text-sm italic text-gray-600 mb-2">
+                      {{ item.speaker }}
+                    </div>
+                    <ul v-if="item.topics" class="space-y-1 mt-2">
+                      <li
+                        v-for="(topic, topicIndex) in item.topics"
+                        :key="topicIndex"
+                        class="text-sm text-gray-700 ml-4 list-disc"
+                      >
+                        {{ topic }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section class="rounded-lg p-8 text-white text-center">
+                <Button size="xl" class="inline-flex items-center gap-2">
+                  <ArrowDownToLine class="w-5 h-5" />
+                  Download Registration Form
+                </Button>
+              </section>
+            </div>
+
+            <div class="lg:col-span-1">
+              <div class="space-y-6 sticky top-32">
+                <!-- What Learners Say - Conditionnel -->
+                <div v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                    What Learners Say
+                  </h2>
+                  <div class="space-y-4">
+                    <div
+                      v-for="(testimonial, index) in course.testimonials"
+                      :key="index"
+                      class="border-l-4 border-primary pl-4 py-2"
+                    >
+                      <p class="text-sm text-gray-700 italic mb-2">
+                        "{{ testimonial.quote }}"
+                      </p>
+                      <p class="text-xs text-gray-600">— {{ testimonial.author }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accredited By - Conditionnel -->
+                <div v-if="course.accreditation" class="bg-white border rounded-xl shadow-sm p-6">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                    {{ course.accreditation.title }}
+                  </h2>
+                  <div class="mb-6">
+                    <img
+                      :src="course.accreditation.logo"
+                      :alt="course.accreditation.title"
+                      class="w-full max-w-md mx-auto"
+                    />
+                  </div>
+                  <div class="space-y-4 text-gray-700">
+                    <p class="leading-relaxed">
+                      {{ course.accreditation.description }}
+                    </p>
+                    <ul v-if="course.accreditation.benefits && course.accreditation.benefits.length > 0" class="space-y-3">
+                      <li
+                        v-for="(benefit, index) in course.accreditation.benefits"
+                        :key="index"
+                        class="flex items-start gap-2"
+                      >
+                        <span class="text-primary mt-1">▸</span>
+                        <span class="text-sm">{{ benefit.text }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Related Courses - Conditionnel -->
+                <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                    Related Courses
+                  </h2>
+                  <div class="space-y-3">
+                    <NuxtLink
+                      v-for="(relatedCourse, index) in course.relatedCourses"
+                      :key="index"
+                      :to="relatedCourse.link"
+                      class="flex items-center gap-2 text-primary hover:underline group"
+                    >
+                      <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                      <span class="text-sm">{{ relatedCourse.title }}</span>
+                    </NuxtLink>
+                  </div>
+                </div>
+
+                <div class="bg-white border rounded-xl shadow-sm p-6">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                    Need More Information?
+                  </h2>
+                  <p class="text-gray-700 mb-6">
+                    Our team is here to answer any questions you may have about this course.
+                  </p>
+                  <div class="space-y-4">
+                    <a
+                      href="tel:02031378632"
+                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <span>020 3137 8632</span>
+                    </a>
+                    <a
+                      href="mailto:enquiry@governmentexchange.org"
+                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      <span>enquiry@governmentexchange.org</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -338,3 +539,30 @@ useHead({
     <Footer />
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Ajouter de l'espacement entre les paragraphes dans le contenu HTML */
+.course-overview-content :deep(p) {
+  margin-bottom: 1rem; /* 16px d'espace entre les paragraphes */
+}
+
+.course-overview-content :deep(p:last-child) {
+  margin-bottom: 0; /* Pas d'espace après le dernier paragraphe */
+}
+
+.course-overview-content :deep(br) {
+  display: block;
+  content: "";
+  margin-bottom: 1rem; /* 16px d'espace après chaque <br> */
+}
+</style>
