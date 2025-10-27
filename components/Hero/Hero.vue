@@ -13,9 +13,12 @@ import { Button } from "~/components/ui/button";
           </div>
 
           <h1 class="text-5xl lg:text-6xl font-semibold leading-tight">
-            Strategic Thinking<br />
-            for Public Service Excellence
+            Excellence in Public Service Training
           </h1>
+
+          <p class="text-lg text-white leading-relaxed max-w-xl">
+            We offer a wide range of highly informative interactive training events and certificated courses, providing insights into the workings of Parliament, Government and policy-making. We also offer bespoke training UK-wide and internationally.
+          </p>
 
           <p class="text-lg text-white/90 max-w-xl leading-relaxed">
             Government Exchange is a leading provider of accredited professional training in the UK. As an organisation that trains Ministers, we are at the forefront of thinking in Government and skills development.

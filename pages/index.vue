@@ -15,7 +15,6 @@ useHead({
     <Navigation />
     <main>
       <Hero />
-      <HeroTitle />
       <Features />
       <TrainingCategories />
       <BespokeTraining />
