@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
 import { ArrowRight } from "lucide-vue-next";
+import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
 
 const images = [
-  "/images/image012.jpg",
-  "/images/image013.jpg",
-  "/images/image014.jpg",
+  "/images/image 1.png",
+  "/images/image 2.png",
+  "/images/image 3.png",
 ];
 
 const currentImageIndex = ref(0);
