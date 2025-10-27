@@ -1,6 +1,32 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
 import { ArrowRight } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
+
+const images = [
+  "/images/image012.jpg",
+  "/images/image013.jpg",
+  "/images/image014.jpg",
+];
+
+const currentImageIndex = ref(0);
+let intervalId: ReturnType<typeof setInterval> | null = null;
+
+onMounted(() => {
+  intervalId = setInterval(() => {
+    currentImageIndex.value = (currentImageIndex.value + 1) % images.length;
+  }, 5000);
+});
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+});
+
+const goToSlide = (index: number) => {
+  currentImageIndex.value = index;
+};
 </script>
 
 <template>
@@ -45,12 +71,34 @@ import { Button } from "~/components/ui/button";
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-tl from-white/5 to-transparent rounded-2xl pointer-events-none z-10"></div>
 
-            <div class="relative bg-white rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-300">
-              <!-- <img
-                src="/images/government-exchange-brochure.jpg"
-                alt="Government Exchange Training Brochure"
-                class="w-full h-auto rounded-lg"
-              /> -->
+            <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
+              <div class="relative aspect-[4/3]">
+                <TransitionGroup name="fade">
+                  <img
+                    v-for="(image, index) in images"
+                    v-show="index === currentImageIndex"
+                    :key="image"
+                    :src="image"
+                    alt="Government Exchange Training"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                </TransitionGroup>
+              </div>
+
+              <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                <button
+                  v-for="(_, index) in images"
+                  :key="index"
+                  @click="goToSlide(index)"
+                  :class="[
+                    'w-3 h-3 rounded-full transition-all duration-300',
+                    index === currentImageIndex
+                      ? 'bg-white w-8'
+                      : 'bg-white/50 hover:bg-white/75'
+                  ]"
+                  :aria-label="`Go to slide ${index + 1}`"
+                ></button>
+              </div>
             </div>
           </div>
         </div>
@@ -61,3 +109,22 @@ import { Button } from "~/components/ui/button";
     <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none"></div>
   </section>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+</style>
