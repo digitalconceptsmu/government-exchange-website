@@ -124,7 +124,7 @@ const currentCourses = computed(() => {
 
         <div class="mb-12 max-w-4xl">
           <p class="text-gray-700 mb-4">
-            Explore a range of eLearning courses developed by our parent organisation, the International Centre for Parliamentary Studies (ICPS).
+            Explore a range of eLearning courses developed by our specialist trainers.
           </p>
           <p class="text-gray-700">
             These eLearning courses are designed for public service professionals seeking to build their skills in different competency areas including but not limited to governance, policy, and leadership.
