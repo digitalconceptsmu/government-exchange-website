@@ -130,7 +130,7 @@ const courseData: Record<string, any> = {
   "parliamentary-process": {
     title: "Parliamentary Process",
     type: "1 day (November 2025)",
-    venue: "Wilson Auditorium",
+    venue: "Virtual Learning",
     registrationForm: "#",
     description:
       "Government Exchange is excited to present an immersive and hands-on online short course attending to the Parliamentary Process. Allowing you to familiarise with the machinery of Parliament and interact with and distinguishes Members of the House of Lords.",
@@ -309,13 +309,7 @@ useHead({
             <div class="flex items-center gap-2">
               <FileText class="w-5 h-5 text-primary" />
               <div>
-                <div class="text-gray-600 text-xs">Registration form (doc)</div>
-                <a
-                  :href="course.registrationForm"
-                  class="font-medium text-primary hover:underline"
-                >
-                  Download
-                </a>
+                <div class="text-primary text-xs hover:underline cursor-pointer">Registration form (doc)</div>
               </div>
             </div>
           </div>

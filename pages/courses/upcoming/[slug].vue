@@ -1,16 +1,41 @@
 <script setup lang="ts">
 import { ArrowDownToLine, Award, Calendar, CheckCircle, Clock, FileText, Mail, MapPin, Phone, Users } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const route = useRoute();
 const slug = route.params.slug;
+const showFormatDropdown = ref(false);
+const dropdownRef = ref<HTMLElement | null>(null);
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
+    showFormatDropdown.value = false;
+  }
+};
+
+const handleEscapeKey = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') {
+    showFormatDropdown.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+  document.addEventListener('keydown', handleEscapeKey);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+  document.removeEventListener('keydown', handleEscapeKey);
+});
 
 const upcomingCourseData: Record<string, any> = {
   "leadership-and-management": {
     title: "Professional Certificate in Leadership and Management",
     duration: "6 days (November 2025)",
     dates: "1st - 6th November 2025",
-    location: "London, UK",
+    location: "Virtual Learning",
     time: "09:00 - 17:00",
     price: "£2,495",
     priceNote: "+ VAT per person",
@@ -317,14 +342,45 @@ useHead({
                   <Button variant="light" class="w-full" size="lg">
                     Register Interest
                   </Button>
-                  <Button
-                    variant="light"
-                    class="w-full"
-                    size="lg"
-                  >
-                    <ArrowDownToLine class="w-5 h-5" />
-                    Download Brochure
-                  </Button>
+                  <div class="relative" ref="dropdownRef">
+                    <Button
+                      variant="light"
+                      class="w-full"
+                      size="lg"
+                      @click="showFormatDropdown = !showFormatDropdown"
+                    >
+                      <ArrowDownToLine class="w-5 h-5" />
+                      Click for Registration Form
+                    </Button>
+                    <div
+                      v-if="showFormatDropdown"
+                      class="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-10"
+                    >
+                      <a
+                        href="#"
+                        class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                        @click.prevent="showFormatDropdown = false"
+                      >
+                        <FileText class="w-5 h-5 text-primary" />
+                        <div>
+                          <div class="text-sm font-medium text-gray-900">Word Document</div>
+                          <div class="text-xs text-gray-500">Download .docx format</div>
+                        </div>
+                      </a>
+                      <div class="w-full h-[1px] bg-gray-200"></div>
+                      <a
+                        href="#"
+                        class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                        @click.prevent="showFormatDropdown = false"
+                      >
+                        <FileText class="w-5 h-5 text-primary" />
+                        <div>
+                          <div class="text-sm font-medium text-gray-900">PDF Document</div>
+                          <div class="text-xs text-gray-500">Download .pdf format</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
