@@ -14,7 +14,7 @@ const subTitle = ref('Browse our scheduled training courses and register for upc
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" :sub-title="subTitle" size="sm" />
+      <Header :title="title" :sub-title="subTitle" size="sm" background-image="/images/study.png" />
       <Upcoming />
     </main>
     <Footer />

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowDownToLine, Award, Calendar, CheckCircle, Clock, FileText, Mail, MapPin, Phone, Users } from "lucide-vue-next";
+import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
-import { ref, onMounted, onUnmounted } from "vue";
 
 const route = useRoute();
 const slug = route.params.slug;
@@ -184,20 +184,25 @@ useHead({
   <div class="min-h-screen bg-gray-50">
     <Navigation />
     <main>
-      <div class="bg-primary text-white py-16 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-          <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white/20"></div>
-        </div>
+      <div class="text-white py-16 relative overflow-hidden">
+        <!-- Background Image -->
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url('/images/in_hourse_training.jpg')"
+        ></div>
+
+        <!-- Semi-transparent Overlay -->
+        <div class="absolute inset-0 bg-primary/90"></div>
 
         <div class="container mx-auto px-4 max-w-7xl relative z-10">
           <div class="mb-4">
-            <NuxtLink
-              to="/courses/upcoming"
-              class="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2"
-            >
-              ← Back to Upcoming Courses
-            </NuxtLink>
           </div>
+          <NuxtLink
+            to="/courses/upcoming"
+            class="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2"
+          >
+            ← Back to Upcoming Courses
+          </NuxtLink>
           <h1 class="text-4xl lg:text-5xl font-bold">
             {{ course.title }}
           </h1>

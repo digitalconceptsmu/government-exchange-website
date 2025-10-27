@@ -6,127 +6,6 @@ const route = useRoute();
 const slug = route.params.slug;
 
 const courseData: Record<string, any> = {
-  "leadership-and-management": {
-    title: "Professional Certificate in Leadership and Management",
-    type: "6 days (1st - 6th November 2025)",
-    venue: "Online",
-    registrationForm: "#",
-    description:
-      "This comprehensive professional certificate program is designed for current and aspiring leaders in the public sector. Develop essential leadership competencies, strategic thinking, and management skills required to lead high-performing teams and drive organizational excellence.",
-    overview:
-      "Over six intensive days, participants will explore contemporary leadership theories, practical management tools, and evidence-based approaches to leading in complex public sector environments. The program combines theoretical knowledge with practical application through case studies, group discussions, and hands-on exercises.",
-    speakers: [
-      {
-        name: "Dr. Sarah Mitchell",
-        title: "Director of Leadership Development, Cabinet Office",
-      },
-      {
-        name: "Professor James Reynolds",
-        title: "Professor of Public Management, London School of Economics",
-      },
-    ],
-    outcomes: [
-      "Develop advanced leadership skills for managing diverse teams in public service",
-      "Master strategic planning and decision-making in complex organizational contexts",
-      "Build effective communication and stakeholder engagement capabilities",
-      "Understand change management principles and how to lead organizational transformation",
-      "Learn to create and sustain high-performance cultures",
-      "Develop emotional intelligence and adaptive leadership competencies",
-      "Apply evidence-based management practices to public sector challenges",
-      "Build resilience and navigate political and organizational complexities",
-    ],
-    agenda: [
-      {
-        time: "Day 1",
-        title: "Foundations of Public Sector Leadership",
-      },
-      {
-        time: "Day 2",
-        title: "Strategic Thinking and Decision Making",
-      },
-      {
-        time: "Day 3",
-        title: "Leading High-Performance Teams",
-      },
-      {
-        time: "Day 4",
-        title: "Change Management and Organizational Development",
-      },
-      {
-        time: "Day 5",
-        title: "Stakeholder Engagement and Political Awareness",
-      },
-      {
-        time: "Day 6",
-        title: "Leadership in Practice and Action Planning",
-      },
-    ],
-    testimonials: [
-      {
-        quote:
-          "An exceptional program that transformed my approach to leadership. The practical tools and frameworks are immediately applicable.",
-        author: "Director, Department for Education",
-      },
-      {
-        quote:
-          "Outstanding faculty and excellent content. This certificate has significantly enhanced my leadership capabilities.",
-        author: "Senior Manager, NHS",
-      },
-    ],
-  },
-  "successful-managers-toolkit": {
-    title: "The Successful Managers Toolkits for the Public Service",
-    type: "E-Learning Course (Self-paced)",
-    venue: "Online Platform",
-    registrationForm: "#",
-    description:
-      "A comprehensive online toolkit designed for managers at all levels in public service. This e-learning course provides practical tools, templates, and frameworks to enhance your management effectiveness and achieve better outcomes for your organization.",
-    overview:
-      "This flexible, self-paced course covers essential management competencies including planning, organizing, delegating, monitoring performance, and developing your team. Each module includes practical exercises, downloadable resources, and real-world case studies from public sector contexts.",
-    speakers: [],
-    outcomes: [
-      "Master essential management tools and techniques for daily operations",
-      "Develop effective planning and prioritization skills",
-      "Learn to delegate effectively and empower your team",
-      "Build performance management and coaching capabilities",
-      "Understand resource management and budgeting basics",
-      "Create action plans for implementing learning in your workplace",
-      "Access a library of templates and tools for immediate use",
-      "Connect with a community of public sector managers",
-    ],
-    agenda: [
-      {
-        title: "Module 1: Planning and Organizing Your Work",
-      },
-      {
-        title: "Module 2: Effective Delegation and Empowerment",
-      },
-      {
-        title: "Module 3: Performance Management Essentials",
-      },
-      {
-        title: "Module 4: Resource Management and Budgeting",
-      },
-      {
-        title: "Module 5: Coaching and Developing Your Team",
-      },
-      {
-        title: "Module 6: Problem Solving and Decision Making",
-      },
-    ],
-    testimonials: [
-      {
-        quote:
-          "The toolkit approach is brilliant. I can access resources when I need them and apply them immediately to real challenges.",
-        author: "Team Leader, Local Government",
-      },
-      {
-        quote:
-          "Flexible and practical. The templates alone have saved me countless hours and improved my team's performance.",
-        author: "Manager, Civil Service",
-      },
-    ],
-  },
   "parliamentary-process": {
     title: "Parliamentary Process",
     type: "1 day (November 2025)",
@@ -273,17 +152,24 @@ useHead({
   <div class="min-h-screen bg-background bg-gray-50">
     <Navigation />
     <main>
-      <div class="bg-primary text-white py-16">
-        <div class="container mx-auto px-4 max-w-7xl">
-          <div class="mb-6">
-            <NuxtLink
-              to="/courses"
-              class="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2"
-            >
-              ← Back to Open Courses
-            </NuxtLink>
+      <div class="text-white py-16 relative overflow-hidden">
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url('/images/in_hourse_training.jpg')"
+        ></div>
+
+        <div class="absolute inset-0 bg-primary/90"></div>
+
+        <div class="container mx-auto px-4 max-w-7xl relative z-10">
+          <div class="mb-4">
           </div>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-4">
+          <NuxtLink
+            to="/courses"
+            class="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2"
+          >
+            ← Back to Courses
+          </NuxtLink>
+          <h1 class="text-4xl lg:text-5xl font-bold">
             {{ course.title }}
           </h1>
         </div>
@@ -414,20 +300,6 @@ useHead({
 
           <div class="lg:col-span-1">
             <div class="space-y-6 sticky top-32">
-              <div class="rounded-xl border p-6 text-white bg-gradient-to-r from-primary to-green-800">
-                <h3 class="text-xl font-semibold mb-4">Register Interest</h3>
-                <p class="text-white/90 mb-6 text-sm">
-                  Interested in this course? Contact us for upcoming dates and
-                  registration details.
-                </p>
-                <div class="space-y-3">
-                  <Button variant="light" class="w-full">Email Enquiry</Button>
-                  <Button variant="outline" class="w-full text-white border-white hover:bg-white/10">
-                    Call: 020 3137 8632
-                  </Button>
-                </div>
-              </div>
-
               <div class="bg-white border rounded-xl shadow-sm p-6">
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">
                   What Delegates Say
@@ -443,6 +315,19 @@ useHead({
                     </p>
                     <p class="text-xs text-gray-600">— {{ testimonial.author }}</p>
                   </div>
+                </div>
+              </div>
+              <div class="rounded-xl border p-6 text-white bg-gradient-to-r from-primary to-green-800">
+                <h3 class="text-xl font-semibold mb-4">Register Interest</h3>
+                <p class="text-white/90 mb-6 text-sm">
+                  Interested in this course? Contact us for upcoming dates and
+                  registration details.
+                </p>
+                <div class="space-y-3">
+                  <Button variant="light" class="w-full">Email Enquiry</Button>
+                  <Button variant="outline" class="w-full text-white border-white hover:bg-white/10">
+                    Call: 020 3137 8632
+                  </Button>
                 </div>
               </div>
             </div>

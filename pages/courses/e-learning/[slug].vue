@@ -122,9 +122,17 @@ useHead({
   <div class="min-h-screen bg-gray-50">
     <Navigation />
     <main>
-      <!-- Header Section -->
-      <div class="bg-primary text-white py-16">
-        <div class="container mx-auto px-4 max-w-7xl">
+      <div class="text-white py-16 relative overflow-hidden">
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url('/images/in_hourse_training.jpg')"
+        ></div>
+
+        <div class="absolute inset-0 bg-primary/90"></div>
+
+        <div class="container mx-auto px-4 max-w-7xl relative z-10">
+          <div class="mb-4">
+          </div>
           <h1 class="text-4xl lg:text-5xl font-bold mb-4">E-Learning Courses</h1>
           <div class="flex items-center gap-2 text-white/80 text-sm">
             <NuxtLink to="/" class="hover:text-white">Home</NuxtLink>
