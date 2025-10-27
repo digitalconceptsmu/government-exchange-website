@@ -14,6 +14,7 @@ useHead({
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
+      <ImageSlideshow />
       <Hero />
       <Features />
       <TrainingCategories />
