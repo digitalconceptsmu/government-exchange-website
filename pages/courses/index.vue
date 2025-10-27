@@ -20,7 +20,7 @@ const subTitle = ref(
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" :sub-title="subTitle" size="sm" background-image="/images/study.png" />
+      <Header :title="title" :sub-title="subTitle" size="sm" background-image="/images/uk_training.jpg" />
       <Courses />
     </main>
     <Footer />

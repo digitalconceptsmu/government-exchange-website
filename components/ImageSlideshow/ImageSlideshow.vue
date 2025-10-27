@@ -3,11 +3,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-vue-next';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const images = [
-  '/images/image002.jpg',
-  '/images/image003.jpg',
-  '/images/image004.jpg',
-  '/images/image005.jpg',
-  '/images/image006.jpg',
+  '/images/image001.png',
+  '/images/image002.png',
+  '/images/image003.png',
+  '/images/image004.png',
 ];
 
 const currentIndex = ref(0);

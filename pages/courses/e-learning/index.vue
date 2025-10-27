@@ -14,7 +14,7 @@ const subTitle = ref('Flexible online learning solutions designed for busy profe
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" :sub-title="subTitle" size="sm" background-image="/images/study.png" />
+      <Header :title="title" :sub-title="subTitle" size="sm" background-image="/images/international_training.jpg" />
       <Elearning />
       <ElearningCTA />
     </main>
