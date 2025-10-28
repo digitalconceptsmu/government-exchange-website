@@ -18,8 +18,8 @@ const quickLinks = [
 ];
 
 const policies = [
-  { name: "Privacy Policy", href: "#privacy" },
-  { name: "Terms & Conditions", href: "#terms" },
+  { name: "Privacy Policy", href: "privacy-policy" },
+  { name: "Terms & Conditions", href: "terms-and-conditions" },
 ];
 </script>
 
