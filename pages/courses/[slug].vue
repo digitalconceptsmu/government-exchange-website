@@ -376,6 +376,20 @@ useHead({
 
               <section class="bg-white border rounded-xl shadow-sm p-8">
                 <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                  Interview With One of the Training Experts
+                </h2>
+                <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
+                  <iframe
+                    src="https://drive.google.com/file/d/11BXEWCUF2hjWuwveQImtXQpsVYPD6e76/preview"
+                    class="absolute inset-0 w-full h-full"
+                    allow="autoplay"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </section>
+
+              <section class="bg-white border rounded-xl shadow-sm p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
                   Learning Outcomes
                 </h2>
                 <div class="space-y-4">
