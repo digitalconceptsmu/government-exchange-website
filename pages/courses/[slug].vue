@@ -1,85 +1,65 @@
 <script setup lang="ts">
 import { ArrowDownToLine, CheckCircle, FileText, MapPin } from "lucide-vue-next";
-import { ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
 
 const route = useRoute();
 const slug = route.params.slug;
 
-const videoRef = ref<HTMLVideoElement | null>(null);
-const isPlaying = ref(false);
-const isMuted = ref(false);
-const currentTime = ref(0);
-const duration = ref(0);
-const isFullscreen = ref(false);
-const showControls = ref(true);
-let controlsTimeout: ReturnType<typeof setTimeout> | null = null;
+const showDropdown1 = ref(false);
+const showDropdown2 = ref(false);
+const dropdown1Ref = ref<HTMLElement | null>(null);
+const dropdown2Ref = ref<HTMLElement | null>(null);
 
-const togglePlay = () => {
-  if (!videoRef.value) return;
-
-  if (isPlaying.value) {
-    videoRef.value.pause();
-  } else {
-    videoRef.value.play();
-  }
-  isPlaying.value = !isPlaying.value;
+const toggleDropdown1 = () => {
+  showDropdown1.value = !showDropdown1.value;
+  showDropdown2.value = false;
 };
 
-const toggleMute = () => {
-  if (!videoRef.value) return;
-  videoRef.value.muted = !videoRef.value.muted;
-  isMuted.value = videoRef.value.muted;
+const toggleDropdown2 = () => {
+  showDropdown2.value = !showDropdown2.value;
+  showDropdown1.value = false;
 };
 
-const toggleFullscreen = () => {
-  if (!videoRef.value) return;
+const closeDropdowns = () => {
+  showDropdown1.value = false;
+  showDropdown2.value = false;
+};
 
-  const videoContainer = videoRef.value.parentElement;
-  if (!videoContainer) return;
-
-  if (!document.fullscreenElement) {
-    videoContainer.requestFullscreen();
-    isFullscreen.value = true;
-  } else {
-    document.exitFullscreen();
-    isFullscreen.value = false;
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as Node;
+  if (
+    dropdown1Ref.value &&
+    !dropdown1Ref.value.contains(target) &&
+    dropdown2Ref.value &&
+    !dropdown2Ref.value.contains(target)
+  ) {
+    closeDropdowns();
   }
 };
 
-const updateTime = () => {
-  if (!videoRef.value) return;
-  currentTime.value = videoRef.value.currentTime;
-  duration.value = videoRef.value.duration;
-};
-
-const seek = (event: MouseEvent) => {
-  if (!videoRef.value) return;
-  const progressBar = event.currentTarget as HTMLElement;
-  const clickX = event.offsetX;
-  const width = progressBar.offsetWidth;
-  const newTime = (clickX / width) * duration.value;
-  videoRef.value.currentTime = newTime;
-};
-
-const formatTime = (seconds: number) => {
-  if (isNaN(seconds)) return "0:00";
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-};
-
-const handleMouseMove = () => {
-  showControls.value = true;
-  if (controlsTimeout) {
-    clearTimeout(controlsTimeout);
+const handleKeyDown = (event: KeyboardEvent) => {
+  if (event.key === "Escape" || event.key === "Enter") {
+    closeDropdowns();
   }
-  controlsTimeout = setTimeout(() => {
-    if (isPlaying.value) {
-      showControls.value = false;
-    }
-  }, 2000);
 };
+
+const downloadForm = (format: "pdf" | "word") => {
+  // Logique pour télécharger le formulaire
+  console.log(`Downloading ${format} form for course: ${slug}`);
+  // Ajoutez ici le lien de téléchargement réel
+  closeDropdowns();
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+  document.addEventListener("keydown", handleKeyDown);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
+  document.removeEventListener("keydown", handleKeyDown);
+});
 
 const courseData: Record<string, any> = {
   "parliamentary-process": {
@@ -307,11 +287,39 @@ useHead({
                   <div class="font-medium">{{ course.venue }}</div>
                 </div>
               </div>
-              <div class="flex items-center gap-2">
-                <Button class="inline-flex items-center gap-2">
+              <div class="flex items-center gap-2 relative" ref="dropdown1Ref">
+                <Button
+                  class="inline-flex items-center gap-2"
+                  @click="toggleDropdown1"
+                >
                   <ArrowDownToLine class="w-5 h-5" />
                   Click for Registration Form
                 </Button>
+                <div
+                  v-if="showDropdown1"
+                  class="absolute top-full mt-2 left-0 bg-white border border-gray-200 rounded-lg shadow-lg py-3 min-w-[240px] z-50"
+                >
+                  <button
+                    @click="downloadForm('word')"
+                    class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                  >
+                    <FileText class="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">Word Document</div>
+                      <div class="text-xs text-gray-500">Download .docx format</div>
+                    </div>
+                  </button>
+                  <button
+                    @click="downloadForm('pdf')"
+                    class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                  >
+                    <FileText class="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">PDF Document</div>
+                      <div class="text-xs text-gray-500">Download .pdf format</div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -325,7 +333,6 @@ useHead({
                   Course overview
                 </h2>
 
-                <!-- Description: support string ou array -->
                 <div v-if="Array.isArray(course.description)" class="space-y-4 mb-6">
                   <p
                     v-for="(paragraph, index) in course.description"
@@ -339,7 +346,6 @@ useHead({
                   {{ course.description }}
                 </p>
 
-                <!-- Overview: support string, array, ou HTML -->
                 <div v-if="course.overview">
                   <div v-if="Array.isArray(course.overview)" class="space-y-4">
                     <p
@@ -441,16 +447,46 @@ useHead({
               </section>
 
               <section class="rounded-lg p-8 text-white text-center">
-                <Button size="xl" class="inline-flex items-center gap-2">
-                  <ArrowDownToLine class="w-5 h-5" />
-                  Download Registration Form
-                </Button>
+                <div class="relative inline-block" ref="dropdown2Ref">
+                  <Button
+                    size="xl"
+                    class="inline-flex items-center gap-2"
+                    @click="toggleDropdown2"
+                  >
+                    <ArrowDownToLine class="w-5 h-5" />
+                    Click for Registration Form
+                  </Button>
+                  <div
+                    v-if="showDropdown2"
+                    class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-white border border-gray-200 rounded-lg shadow-lg py-3 min-w-[240px] z-50"
+                  >
+                    <button
+                      @click="downloadForm('word')"
+                      class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                    >
+                      <FileText class="w-5 h-5 text-primary mt-0.5" />
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Word Document</div>
+                        <div class="text-xs text-gray-500">Download .docx format</div>
+                      </div>
+                    </button>
+                    <button
+                      @click="downloadForm('pdf')"
+                      class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                    >
+                      <FileText class="w-5 h-5 text-primary mt-0.5" />
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">PDF Document</div>
+                        <div class="text-xs text-gray-500">Download .pdf format</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </section>
             </div>
 
             <div class="lg:col-span-1">
               <div class="space-y-6 sticky top-32">
-                <!-- What Learners Say - Conditionnel -->
                 <div v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
                   <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
                     What Learners Say
@@ -469,7 +505,6 @@ useHead({
                   </div>
                 </div>
 
-                <!-- Accredited By - Conditionnel -->
                 <div v-if="course.accreditation" class="bg-white border rounded-xl shadow-sm p-6">
                   <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
                     {{ course.accreditation.title }}
@@ -498,7 +533,6 @@ useHead({
                   </div>
                 </div>
 
-                <!-- Related Courses - Conditionnel -->
                 <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
                   <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
                     Related Courses
@@ -508,10 +542,10 @@ useHead({
                       v-for="(relatedCourse, index) in course.relatedCourses"
                       :key="index"
                       :to="relatedCourse.link"
-                      class="flex items-center gap-2 text-primary hover:underline group"
+                      class="flex items-center gap-2 text-primary group"
                     >
                       <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
-                      <span class="text-sm">{{ relatedCourse.title }}</span>
+                      <span class="text-sm hover:underline">{{ relatedCourse.title }}</span>
                     </NuxtLink>
                   </div>
                 </div>

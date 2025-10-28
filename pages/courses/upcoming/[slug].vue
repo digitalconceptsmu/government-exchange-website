@@ -1,9 +1,65 @@
 <script setup lang="ts">
-import { ArrowDownToLine, CheckCircle, MapPin } from "lucide-vue-next";
+import { ArrowDownToLine, CheckCircle, FileText, MapPin } from "lucide-vue-next";
+import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
 
 const route = useRoute();
 const slug = route.params.slug;
+
+const showDropdown1 = ref(false);
+const showDropdown2 = ref(false);
+const dropdown1Ref = ref<HTMLElement | null>(null);
+const dropdown2Ref = ref<HTMLElement | null>(null);
+
+const toggleDropdown1 = () => {
+  showDropdown1.value = !showDropdown1.value;
+  showDropdown2.value = false;
+};
+
+const toggleDropdown2 = () => {
+  showDropdown2.value = !showDropdown2.value;
+  showDropdown1.value = false;
+};
+
+const closeDropdowns = () => {
+  showDropdown1.value = false;
+  showDropdown2.value = false;
+};
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as Node;
+  if (
+    dropdown1Ref.value &&
+    !dropdown1Ref.value.contains(target) &&
+    dropdown2Ref.value &&
+    !dropdown2Ref.value.contains(target)
+  ) {
+    closeDropdowns();
+  }
+};
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  if (event.key === "Escape" || event.key === "Enter") {
+    closeDropdowns();
+  }
+};
+
+const downloadForm = (format: "pdf" | "word") => {
+  // Logique pour télécharger le formulaire
+  console.log(`Downloading ${format} form for course: ${slug}`);
+  // Ajoutez ici le lien de téléchargement réel
+  closeDropdowns();
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+  document.addEventListener("keydown", handleKeyDown);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
+  document.removeEventListener("keydown", handleKeyDown);
+});
 
 const upcomingCourseData: Record<string, any> = {
   "leadership-and-management": {
@@ -157,11 +213,10 @@ const upcomingCourseData: Record<string, any> = {
         }
       ]
     },
-    partnerInfo: {
-      title: "Institute of Leadership",
-      description: "This programme is delivered in partnership with the Institute of Leadership, a leading professional body dedicated to advancing leadership excellence in the public sector.",
-      details: "Upon successful completion of the programme, participants will receive a Professional Certificate in Leadership and Management, recognized across government departments and public sector organizations."
-    }
+    relatedCourses: [
+      { title: "Working With the New Parliament", link: "#" },
+      { title: "How Government Works: the New Coalition", link: "#" },
+    ],
   },
 };
 
@@ -231,32 +286,39 @@ useHead({
                   <div class="font-medium">{{ course.venue }}</div>
                 </div>
               </div>
-              <!-- <div v-if="course.duration" class="flex items-center gap-2">
-                <FileText class="w-5 h-5 text-primary" />
-                <div>
-                  <div class="text-gray-600 text-xs">Duration</div>
-                  <div class="font-medium">{{ course.duration }}</div>
-                </div>
-              </div> -->
-              <!-- <div v-if="course.time" class="flex items-center gap-2">
-                <FileText class="w-5 h-5 text-primary" />
-                <div>
-                  <div class="text-gray-600 text-xs">Time</div>
-                  <div class="font-medium">{{ course.time }}</div>
-                </div>
-              </div> -->
-              <!-- <div v-if="course.price" class="flex items-center gap-2">
-                <FileText class="w-5 h-5 text-primary" />
-                <div>
-                  <div class="text-gray-600 text-xs">Price</div>
-                  <div class="font-medium">{{ course.price }} <span v-if="course.priceNote" class="text-xs text-gray-500">{{ course.priceNote }}</span></div>
-                </div>
-              </div> -->
-              <div class="flex items-center gap-2">
-                <Button class="inline-flex items-center gap-2">
+              <div class="flex items-center gap-2 relative" ref="dropdown1Ref">
+                <Button
+                  class="inline-flex items-center gap-2"
+                  @click="toggleDropdown1"
+                >
                   <ArrowDownToLine class="w-5 h-5" />
                   Click for Registration Form
                 </Button>
+                <div
+                  v-if="showDropdown1"
+                  class="absolute top-full mt-2 left-0 bg-white border border-gray-200 rounded-lg shadow-lg py-3 min-w-[240px] z-50"
+                >
+                  <button
+                    @click="downloadForm('word')"
+                    class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                  >
+                    <FileText class="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">Word Document</div>
+                      <div class="text-xs text-gray-500">Download .docx format</div>
+                    </div>
+                  </button>
+                  <button
+                    @click="downloadForm('pdf')"
+                    class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                  >
+                    <FileText class="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">PDF Document</div>
+                      <div class="text-xs text-gray-500">Download .pdf format</div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -297,26 +359,25 @@ useHead({
                 </div>
               </section>
 
-              <section v-if="course.partnerInfo" class="bg-gradient-to-br from-primary/5 to-white border rounded-xl shadow-sm p-8">
-                <div class="flex items-start gap-4">
-                  <CheckCircle class="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                      {{ course.partnerInfo.title }}
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                      {{ course.partnerInfo.description }}
-                    </p>
-                    <p class="text-gray-700 leading-relaxed">
-                      {{ course.partnerInfo.details }}
-                    </p>
+              <section v-if="course.benefits && course.benefits.length > 0" class="bg-white border rounded-xl shadow-sm p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                  Learning Outcomes
+                </h2>
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                  <div
+                    v-for="(benefit, index) in course.benefits"
+                    :key="index"
+                    class="flex items-start gap-3"
+                  >
+                    <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <p class="text-gray-700">{{ benefit.text }}</p>
                   </div>
                 </div>
               </section>
 
               <section v-if="course.modules && course.modules.length > 0" class="bg-white border rounded-xl shadow-sm p-8">
                 <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                  Programme Modules
+                  Agenda
                 </h2>
                 <div class="space-y-6">
                   <div
@@ -341,25 +402,9 @@ useHead({
                 </div>
               </section>
 
-              <section v-if="course.benefits && course.benefits.length > 0" class="bg-white border rounded-xl shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                  Key Benefits
-                </h2>
-                <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
-                  <div
-                    v-for="(benefit, index) in course.benefits"
-                    :key="index"
-                    class="flex items-start gap-3"
-                  >
-                    <CheckCircle class="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                    <p class="text-gray-700">{{ benefit.text }}</p>
-                  </div>
-                </div>
-              </section>
-
               <section v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-8">
                 <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                  What Participants Say
+                  What Learners Say
                 </h2>
                 <div class="space-y-6">
                   <div
@@ -377,34 +422,60 @@ useHead({
               </section>
 
               <section class="rounded-lg p-8 text-white text-center">
-                <Button size="xl" class="inline-flex items-center gap-2">
-                  <ArrowDownToLine class="w-5 h-5" />
-                  Download Registration Form
-                </Button>
+                <div class="relative inline-block" ref="dropdown2Ref">
+                  <Button
+                    size="xl"
+                    class="inline-flex items-center gap-2"
+                    @click="toggleDropdown2"
+                  >
+                    <ArrowDownToLine class="w-5 h-5" />
+                    Click for Registration Form
+                  </Button>
+                  <div
+                    v-if="showDropdown2"
+                    class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-white border border-gray-200 rounded-lg shadow-lg py-3 min-w-[240px] z-50"
+                  >
+                    <button
+                      @click="downloadForm('word')"
+                      class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                    >
+                      <FileText class="w-5 h-5 text-primary mt-0.5" />
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">Word Document</div>
+                        <div class="text-xs text-gray-500">Download .docx format</div>
+                      </div>
+                    </button>
+                    <button
+                      @click="downloadForm('pdf')"
+                      class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                    >
+                      <FileText class="w-5 h-5 text-primary mt-0.5" />
+                      <div>
+                        <div class="text-sm font-medium text-gray-900">PDF Document</div>
+                        <div class="text-xs text-gray-500">Download .pdf format</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </section>
             </div>
 
             <div class="lg:col-span-1">
               <div class="space-y-6 top-32">
-                <div v-if="course.courseInfo && course.courseInfo.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
+                <div v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
                   <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                    Course Information
+                    What Learners Say
                   </h2>
                   <div class="space-y-4">
                     <div
-                      v-for="(info, index) in course.courseInfo"
+                      v-for="(testimonial, index) in course.testimonials"
                       :key="index"
-                      class="flex items-start gap-3"
+                      class="border-l-4 border-primary pl-4 py-2"
                     >
-                      <svg class="w-5 h-5 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" v-if="info.icon === 'Users'" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" v-else-if="info.icon === 'Award'" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" v-else />
-                      </svg>
-                      <div>
-                        <div class="font-medium text-gray-900">{{ info.label }}</div>
-                        <div class="text-sm text-gray-600">{{ info.value }}</div>
-                      </div>
+                      <p class="text-sm text-gray-700 italic mb-2">
+                        "{{ testimonial.quote }}"
+                      </p>
+                      <p class="text-xs text-gray-600">— {{ testimonial.author }}</p>
                     </div>
                   </div>
                 </div>
@@ -438,7 +509,6 @@ useHead({
                   </div>
                 </div>
 
-                <!-- Related Courses - Conditionnel -->
                 <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
                   <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
                     Related Courses
@@ -448,10 +518,10 @@ useHead({
                       v-for="(relatedCourse, index) in course.relatedCourses"
                       :key="index"
                       :to="relatedCourse.link"
-                      class="flex items-center gap-2 text-primary hover:underline group"
+                      class="flex items-center gap-2 text-primary group"
                     >
                       <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
-                      <span class="text-sm">{{ relatedCourse.title }}</span>
+                      <span class="text-sm hover:underline">{{ relatedCourse.title }}</span>
                     </NuxtLink>
                   </div>
                 </div>
@@ -505,18 +575,17 @@ useHead({
   opacity: 0;
 }
 
-/* Ajouter de l'espacement entre les paragraphes dans le contenu HTML */
 .course-overview-content :deep(p) {
-  margin-bottom: 1rem; /* 16px d'espace entre les paragraphes */
+  margin-bottom: 1rem;
 }
 
 .course-overview-content :deep(p:last-child) {
-  margin-bottom: 0; /* Pas d'espace après le dernier paragraphe */
+  margin-bottom: 0;
 }
 
 .course-overview-content :deep(br) {
   display: block;
   content: "";
-  margin-bottom: 1rem; /* 16px d'espace après chaque <br> */
+  margin-bottom: 1rem;
 }
 </style>
