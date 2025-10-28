@@ -329,7 +329,7 @@ useHead({
             <div class="lg:col-span-2 space-y-8">
               <section class="bg-white border rounded-xl shadow-sm p-8">
                 <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                  Course overview
+                  Course Overview
                 </h2>
 
                 <div v-if="Array.isArray(course.description)" class="space-y-4 mb-6">
@@ -398,25 +398,6 @@ useHead({
                         <span class="text-sm text-gray-700">{{ item }}</span>
                       </li>
                     </ul>
-                  </div>
-                </div>
-              </section>
-
-              <section v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                  What Learners Say
-                </h2>
-                <div class="space-y-6">
-                  <div
-                    v-for="(testimonial, index) in course.testimonials"
-                    :key="index"
-                    class="bg-gray-50 rounded-lg p-6"
-                  >
-                    <p class="text-gray-700 italic leading-relaxed mb-4">
-                      "{{ testimonial.quote }}"
-                    </p>
-                    <div class="font-medium text-gray-900">{{ testimonial.author }}</div>
-                    <div v-if="testimonial.position" class="text-sm text-gray-600">{{ testimonial.position }}</div>
                   </div>
                 </div>
               </section>

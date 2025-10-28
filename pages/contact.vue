@@ -11,6 +11,7 @@ useHead({
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
+      <Header title="Contact Us" background-image="/images/blog.jpg" />
       <Contact />
     </main>
     <Footer />
