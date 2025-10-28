@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowDownToLine, CheckCircle, FileText, MapPin } from "lucide-vue-next";
+import { ArrowDownToLine, Calendar, CheckCircle, FileText, MapPin } from "lucide-vue-next";
 import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
 
@@ -274,7 +274,7 @@ useHead({
           <div class="container mx-auto px-4 max-w-7xl py-6">
             <div class="flex flex-wrap gap-6 text-sm">
               <div class="flex items-center gap-2">
-                <FileText class="w-5 h-5 text-primary" />
+                <Calendar class="w-5 h-5 text-primary" />
                 <div>
                   <div class="text-gray-600 text-xs">Date</div>
                   <div class="font-medium">{{ course.date }}</div>

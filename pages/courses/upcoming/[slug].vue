@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowDownToLine, CheckCircle, FileText, MapPin } from "lucide-vue-next";
+import { ArrowDownToLine, Calendar, CheckCircle, FileText, MapPin } from "lucide-vue-next";
 import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
 
@@ -271,9 +271,7 @@ useHead({
           <div class="container mx-auto px-4 max-w-7xl py-6">
             <div class="flex flex-wrap gap-6 text-sm">
               <div v-if="course.dates" class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+                <Calendar class="w-5 h-5 text-primary" />
                 <div>
                   <div class="text-gray-600 text-xs">Date</div>
                   <div class="font-medium">{{ course.dates }}</div>
