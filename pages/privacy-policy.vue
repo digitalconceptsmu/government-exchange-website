@@ -276,7 +276,7 @@ const contactInfo = {
         <div class="bg-white rounded-xl shadow-sm p-8 lg:p-12">
           <div class="prose prose-gray max-w-none space-y-12">
             <section v-for="section in privacySections" :key="section.number">
-              <h2 class="text-2xl text-gray-900 mb-4 pb-3 border-b-4 border-primary">
+              <h2 class="text-2xl text-gray-900 mb-4 pb-3 border-b-2 border-primary">
                 {{ section.number }}. {{ section.title }}
               </h2>
 
@@ -291,7 +291,12 @@ const contactInfo = {
 
               <div v-if="section.numberedItems" class="space-y-4 mb-6">
                 <div v-for="(item, index) in section.numberedItems" :key="index" class="pl-6">
-                  <p class="text-gray-700">{{ ['i', 'ii', 'iii'][index] }}. {{ item }}</p>
+                  <p class="text-gray-700">
+                    <span class="text-primary">
+                      {{ ['i', 'ii', 'iii'][index] }}. 
+                    </span>
+                    {{ item }}
+                  </p>
                 </div>
               </div>
 
@@ -306,7 +311,7 @@ const contactInfo = {
 
               <div v-if="section.subsections" class="space-y-6" :class="{ 'mt-6': section.content }">
                 <div v-for="(subsection, subIndex) in section.subsections" :key="subIndex">
-                  <h3 class="text-lg text-gray-900 mb-3">{{ subsection.title }}</h3>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ subsection.title }}</h3>
 
                   <ul v-if="subsection.items" class="list-disc pl-6 space-y-2 text-gray-700">
                     <li v-for="(item, itemIndex) in subsection.items" :key="itemIndex">
@@ -316,7 +321,7 @@ const contactInfo = {
 
                   <div v-if="'purposes' in subsection && subsection.purposes" class="space-y-4">
                     <div v-for="(purpose, purposeIndex) in subsection.purposes" :key="purposeIndex">
-                      <p class="text-gray-900 font-medium">{{ purpose.title }}</p>
+                      <p class="text-gray-900 font-semibold">{{ purpose.title }}</p>
                       <p class="text-gray-700">{{ purpose.description }}</p>
                     </div>
                   </div>
@@ -325,7 +330,7 @@ const contactInfo = {
 
               <div v-if="section.sharingPolicies" class="space-y-6">
                 <div v-for="(policy, policyIndex) in section.sharingPolicies" :key="policyIndex">
-                  <h3 class="text-lg text-gray-900 mb-3">{{ policy.title }}</h3>
+                  <h3 class="text-lg text-gray-900 font-semibold mb-3">{{ policy.title }}</h3>
                   <p class="text-gray-700">{{ policy.description }}</p>
                 </div>
               </div>
@@ -350,7 +355,7 @@ const contactInfo = {
             </section>
 
             <section>
-              <h2 class="text-2xl text-gray-900 mb-4 pb-3 border-b-4 border-primary">
+              <h2 class="text-2xl text-gray-900 mb-4 pb-3 border-b-2 border-primary">
                 {{ contactInfo.number }}. {{ contactInfo.title }}
               </h2>
 
