@@ -52,32 +52,80 @@ const offerings = [
 const testimonials = [
   {
     quote:
-      "Well run course and very informative. I would definitely recommend this course to others.",
-    author: "S. Gordon",
-    organization: "BERR",
+      "The full-day virtual session was conducted well. The class number was small enough to allow for engagement, activities and content was sufficient, and the comfort breaks were appropriately timed. the trainer was excellent as usual. His facilitation approach to the participants, vast knowledge and international experience is beneficial and enhances the training experience.",
+    author: "Cayman Islands Government",
+    organization: "",
   },
   {
-    quote: "Probably one of the best courses I have ever attended. Spot on!",
-    author: "J. Davies",
-    organization: "MOD",
-  },
-  {
-    quote:
-      "Overall, the day was extremely worthwhile and I will recommend it to fellow civil servants.",
-    author: "M. Riddell",
-    organization: "Communities and Local Government",
+    quote: "I enjoyed the course and learnt a lot. Trainer was a very able trainer with a great manner ensuring everyone was able to ask any questions they needed to and to receive a comprehensive response.",
+    author: "Lincolnshire County Council",
+    organization: "",
   },
   {
     quote:
-      "Found the course very informative, interesting, and well presented, with deep and broad insight into the subtleties of government and politics.",
-    author: "A. Driver",
-    organization: "Environmental Agency",
+      "The programme was excellent. Very relatable to my job and I could see how I could put some of this to immediate use to address concerns about a project I've been asked to sponsor. The trainer was excellent and the session was delivered extremely well. Maybe as good if not better than face to face learning.",
+    author: "Department for Work and Pensions",
+    organization: "",
   },
   {
     quote:
-      "I have been to three Westminster Explained courses, however this Government Exchange course was more enjoyable",
-    author: "R. Corben",
-    organization: "Her Majesty's Court Service",
+      "Clearly an excellent trainer - I think in addition to the Strategic Thinking skills I've learned a few tips about presenting and engaging with an audience!",
+    author: "University of Oxford",
+    organization: "",
+  },
+  {
+    quote:
+      "I thought the course was really interesting and that the trainer managed to get through a great deal of material. His delivery was excellent - really clear and engaging.",
+    author: "Standards Commission for Scotland",
+    organization: "",
+  },
+  {
+    quote:
+      "Excellent programme with key takeaways that will impact my approach to strategic planning and thinking about high-level organisational change.",
+    author: "Financial Services Commission, Barbados",
+    organization: "",
+  },
+  {
+    quote:
+      "I am walking away with a rich set of tools and methods.",
+    author: "Ofgem",
+    organization: "",
+  },
+  {
+    quote:
+      "I enjoyed the day. I learned about structure of submissions and briefings, what to do and, possibly more important, what not to do. I was particularly interested in oral briefings and the exercise on this was useful as the range of examples highlighted areas for improvement. I also thought that it was useful being in an environment where other participants were from different organisations. I will be recommending it to colleagues.",
+    author: "Environment Agency",
+    organization: "",
+  },
+  {
+    quote:
+      "Exceeded my expectations. I will take away lessons learnt in both my personal and professional life.",
+    author: "Ofgem",
+    organization: "",
+  },
+  {
+    quote:
+      "Friendly, professional and engaging. Very relevant content, will be great for someone new to this.",
+    author: "DVSA",
+    organization: "",
+  },
+  {
+    quote:
+      "It was very useful. I feel more confident in drafting good briefings and submissions.",
+    author: "Department of Health",
+    organization: "",
+  },
+  {
+    quote:
+      "I have been to three Westminster Explained courses, however this Government Exchange course was more enjoyable.",
+    author: "Her Majesty's Court Service",
+    organization: "",
+  },
+  {
+    quote:
+      "The course was engaging, well thought out and provided useful insight. The trainer was excellent at keeping the participants alert and everyone kept their cameras on throughout. The subject matter expanded my knowledge and I felt that I had learned more about the specifics of submissions and briefings, especially in the UK gov context.",
+    author: "Advanced Propulsion Centre UK",
+    organization: "",
   },
 ];
 </script>
