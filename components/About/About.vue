@@ -88,6 +88,9 @@ const testimonials = [
       <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-36 items-start">
           <div class="space-y-6">
+            <h2 class="text-4xl">About us</h2>
+            <p class="text-gray-700 leading-relaxed">The training division of the Centre for Parliamentary Studies, providing excellence in public service education</p>
+     
             <p class="text-gray-700 leading-relaxed">
               Government Exchange is the training division of the Centre for
               Parliamentary Studies.

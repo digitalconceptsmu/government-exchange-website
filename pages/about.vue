@@ -14,7 +14,7 @@ const subTitle = ref('The training division of the Centre for Parliamentary Stud
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" :sub-title="subTitle" background-image="/images/blog.jpg" />
+      <ImageSlideshow />
       <About />
     </main>
     <Footer />
