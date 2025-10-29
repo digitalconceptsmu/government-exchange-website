@@ -21,23 +21,17 @@ const trainingAreas = [
 ];
 
 const clients = [
-  "BTEC",
-  "DfE",
-  "IPO",
-  "ECC",
-  "MAG",
-  "Ofgem",
-  "Home Office",
-  "MoJ",
-  "DoH",
-  "DCSF",
-  "Defra",
-  "SCC",
-  "BBSRC",
-  "WBC",
-  "CA HPW",
-  "Ofcom",
-  "Herbert Smith",
+  { name: "Department of Health", logo: "/images/department-of-health.jpg" },
+  { name: "Defra", logo: "/images/defra.jpg" },
+  { name: "Home Office", logo: "/images/home-office.jpg" },
+  { name: "Ministry of Justice", logo: "/images/ministry-of-justice.jpg" },
+  { name: "Ofcom", logo: "/images/ofcom.jpg" },
+  { name: "Herbert Smith", logo: "/images/herbert-smith.jpg" },
+  { name: "Department for Children", logo: "/images/dpt-children.jpg" },
+  { name: "DLA Piper", logo: "/images/dla-piper.jpg" },
+  { name: "General Social Care Council", logo: "/images/general-social-care-council.jpg" },
+  { name: "Wokingham Borough Council", logo: "/images/wokingham-borough-council.jpg" },
+  { name: "Bioscience for the Future", logo: "/images/bioscience-for-the-future.jpg" },
 ];
 </script>
 
@@ -185,13 +179,17 @@ const clients = [
               training for are:
             </p>
 
-            <div class="space-y-3">
+            <div class="space-y-4">
               <div
                 v-for="(client, index) in clients"
                 :key="index"
-                class="bg-gray-50 rounded-lg px-4 py-4 text-center text-gray-700 font-medium hover:bg-gray-100 hover:shadow-sm transition-all"
+                class="bg-white rounded-lg px-4 border border-gray-200 hover:border-primary hover:shadow-md transition-all flex items-center justify-center"
               >
-                {{ client }}
+                <img
+                  :src="client.logo"
+                  :alt="client.name"
+                  class="w-full h-auto max-h-20 object-contain"
+                />
               </div>
             </div>
           </div>
