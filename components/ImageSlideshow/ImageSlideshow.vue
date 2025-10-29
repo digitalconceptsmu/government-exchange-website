@@ -7,6 +7,7 @@ const images = [
   '/images/image002.png',
   '/images/image003.png',
   '/images/image004.png',
+  '/images/Gemini_Generated_Image_u303oou303oou303.png',
 ];
 
 const currentIndex = ref(0);
@@ -25,7 +26,7 @@ const goToSlide = (index: number) => {
 };
 
 const startAutoPlay = () => {
-  intervalId = setInterval(nextSlide, 5000);
+  intervalId = setInterval(nextSlide, 4000);
 };
 
 const stopAutoPlay = () => {
