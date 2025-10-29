@@ -21,17 +21,23 @@ const trainingAreas = [
 ];
 
 const clients = [
-  { name: "Department of Health", logo: "/images/department-of-health.jpg" },
-  { name: "Defra", logo: "/images/defra.jpg" },
-  { name: "Home Office", logo: "/images/home-office.jpg" },
-  { name: "Ministry of Justice", logo: "/images/ministry-of-justice.jpg" },
-  { name: "Ofcom", logo: "/images/ofcom.jpg" },
-  { name: "Herbert Smith", logo: "/images/herbert-smith.jpg" },
-  { name: "Department for Children", logo: "/images/dpt-children.jpg" },
-  { name: "DLA Piper", logo: "/images/dla-piper.jpg" },
-  { name: "General Social Care Council", logo: "/images/general-social-care-council.jpg" },
-  { name: "Wokingham Borough Council", logo: "/images/wokingham-borough-council.jpg" },
-  { name: "Bioscience for the Future", logo: "/images/bioscience-for-the-future.jpg" },
+  { name: "Bioscience for the Future", logo: "/images/BespokeClients/bioscience-for-the-future.jpg" },
+  { name: "Department for Children", logo: "/images/BespokeClients/dpt-children.jpg" },
+  { name: "Department for Education", logo: "/images/BespokeClients/DepartmentforEducation.jpg" },
+  { name: "Department of Health", logo: "/images/BespokeClients/department-of-health.jpg" },
+  { name: "Defra", logo: "/images/BespokeClients/defra.jpg" },
+  { name: "DLA Piper", logo: "/images/BespokeClients/dla-piper.jpg" },
+  { name: "Essex County Council", logo: "/images/BespokeClients/EssexCountyCouncil.png" },
+  { name: "General Social Care Council", logo: "/images/BespokeClients/general-social-care-council.jpg" },
+  { name: "Home Office", logo: "/images/BespokeClients/home-office.jpg" },
+  { name: "Herbert Smith", logo: "/images/BespokeClients/herbert-smith.jpg" },
+  { name: "Intellectual Property Office", logo: "/images/BespokeClients/IntellectualPropertyOffice.png" },
+  { name: "MAG", logo: "/images/BespokeClients/MAG.jpg" },
+  { name: "Ministry of Justice", logo: "/images/BespokeClients/ministry-of-justice.jpg" },
+  { name: "Ofcom", logo: "/images/BespokeClients/ofcom.jpg" },
+  { name: "Ofgem", logo: "/images/BespokeClients/ofgem.jpg" },
+  { name: "Science and Tech Facilities Council", logo: "/images/BespokeClients/ScienceAndTechFacilitiesCouncil.png" },
+  { name: "Wokingham Borough Council", logo: "/images/BespokeClients/wokingham-borough-council.jpg" },
 ];
 </script>
 
@@ -183,7 +189,7 @@ const clients = [
               <div
                 v-for="(client, index) in clients"
                 :key="index"
-                class="bg-white rounded-lg px-4 border border-gray-200 hover:border-primary hover:shadow-md transition-all flex items-center justify-center"
+                class="bg-white rounded-lg p-4 border border-gray-200 hover:border-primary hover:shadow-md transition-all flex items-center justify-center"
               >
                 <img
                   :src="client.logo"
