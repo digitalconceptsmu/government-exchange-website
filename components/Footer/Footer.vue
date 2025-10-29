@@ -14,6 +14,7 @@ const quickLinks = [
   { name: "Courses", href: "/courses" },
   { name: "About Us", href: "/about" },
   { name: "Bespoke Training", href: "/bespoke" },
+  { name: "Speakers & Trainers", href: "/speakers-and-trainers" },
   { name: "Contact", href: "/contact" },
 ];
 

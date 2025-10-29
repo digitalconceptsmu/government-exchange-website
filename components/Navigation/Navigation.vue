@@ -10,6 +10,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Bespoke Training", href: "/bespoke" },
+  { name: "Speakers & Trainers", href: "/speakers-and-trainers" },
   { name: "Contact", href: "/contact" },
 ];
 
