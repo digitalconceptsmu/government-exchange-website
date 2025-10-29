@@ -14,7 +14,7 @@ const subTitle = ref('Our highly popular and successful open courses are ideal f
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" :sub-title="subTitle" background-image="/images/international_training.jpg" />
+      <Header :title="title" :sub-title="subTitle" background-image="/images/image012.jpg" />
       <Bespoke />
     </main>
     <Footer />
