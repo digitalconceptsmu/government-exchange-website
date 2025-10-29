@@ -15,10 +15,10 @@ const testimonials = [
     <div class="container mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
-          What Participants Say
+          Feedback from Participants
         </h2>
         <p class="text-lg text-gray-600">
-          Hear from civil servants who have benefited from our training programs
+          Hear from participants who have benefited from our training programs
         </p>
       </div>
 
