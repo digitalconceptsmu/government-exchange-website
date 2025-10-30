@@ -14,16 +14,7 @@ useHead({
   <div class="min-h-screen bg-gray-50">
     <Navigation />
     <main>
-      <div class="text-white py-16 relative overflow-hidden">
-        <div
-          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style="background-image: url('/images/in_hourse_training.jpg')"
-        ></div>
-        <div class="absolute inset-0 bg-primary/90"></div>
-        <div class="container mx-auto px-4 max-w-7xl relative z-10">
-          <h1 class="text-4xl lg:text-5xl font-bold">Terms & Conditions</h1>
-        </div>
-      </div>
+      <Header title="Terms & Conditions" background-image="/images/terms_and_conditions.jpg" />
 
       <div class="container mx-auto px-4 max-w-4xl py-12">
         <div class="bg-white rounded-xl shadow-sm p-8 lg:p-12">

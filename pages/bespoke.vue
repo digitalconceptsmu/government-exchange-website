@@ -7,14 +7,13 @@ useHead({
 })
 
 const title = ref('Bespoke Training');
-const subTitle = ref('Our highly popular and successful open courses are ideal for meeting the training and development needs of individuals within the workforce.');
 </script>
 
 <template>
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" :sub-title="subTitle" background-image="/images/image012.jpg" />
+      <Header :title="title" background-image="/images/image012.jpg" />
       <Bespoke />
     </main>
     <Footer />

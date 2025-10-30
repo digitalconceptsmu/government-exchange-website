@@ -48,6 +48,9 @@ const clients = [
         <div class="lg:col-span-8">
           <div class="space-y-6 text-gray-700 leading-relaxed">
             <p>
+              Our highly popular and successful open courses are ideal for meeting the training and development needs of individuals within the workforce.
+            </p>
+            <p>
               Bespoke training provides added value where there is an
               organisational need for improved performance or greater impact. We
               design the training with you so that it fits entirely around your
@@ -177,7 +180,7 @@ const clients = [
               >
                 <Building class="w-5 h-5 text-primary" />
               </div>
-              <h3 class="text-xl text-gray-900">Who We've Worked With</h3>
+              <h3 class="text-xl text-gray-900">Partners</h3>
             </div>
 
             <p class="text-gray-600 mb-6">

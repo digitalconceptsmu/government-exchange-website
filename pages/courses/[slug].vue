@@ -251,7 +251,7 @@ useHead({
         <div class="text-white py-16 relative overflow-hidden">
           <div
             class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style="background-image: url('/images/course_details.png')"
+            style="background-image: url('/images/video_meeting.png')"
           ></div>
 
           <div class="absolute inset-0 bg-primary/90"></div>
