@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ChevronDown, Mail, Menu, Phone, X } from "lucide-vue-next";
 import { ref } from "vue";
+import { Button } from "~/components/ui/button";
 
 const mobileMenuOpen = ref(false);
 const coursesDropdownOpen = ref(false);
@@ -141,9 +142,7 @@ const handleMouseLeave = () => {
             </NuxtLink>
 
             <NuxtLink to="/courses">
-              <Button
-                class="ml-4 bg-primary py-2 px-4 text-sm rounded-md text-white hover:bg-primary/90"
-              >
+              <Button>
                 Explore Courses
               </Button>
             </NuxtLink>
@@ -232,7 +231,7 @@ const handleMouseLeave = () => {
 
           <div class="px-4 pt-4">
             <NuxtLink to="/courses">
-              <Button class="w-full bg-primary hover:bg-primary/90">
+              <Button>
                 Explore Courses
               </Button>
             </NuxtLink>

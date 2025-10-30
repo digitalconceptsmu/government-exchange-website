@@ -132,7 +132,7 @@ const testimonials = [
 
 <template>
   <div id="about">
-    <section class="py-16 bg-white">
+    <section class="py-16 lg:px-14 bg-white">
       <div class="container mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-36 items-start">
           <div class="space-y-6">
@@ -183,9 +183,9 @@ const testimonials = [
 
           <div class="lg:top-8">
             <img
-              src="../../public/images/westminster1.jpg"
+              src="../../public/images/about_us1.png"
               alt="Government Exchange Brochure"
-              class="w-96 rounded-lg shadow-lg"
+              class="rounded-lg shadow-lg"
             />
           </div>
         </div>
@@ -260,7 +260,7 @@ const testimonials = [
           <div
             v-for="(testimonial, index) in testimonials"
             :key="index"
-            class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            class="bg-white p-4 lg:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
           >
             <div class="mb-6 flex items-start">
               <p class="text-primary italic">"{{ testimonial.quote }}"</p>
@@ -283,7 +283,7 @@ const testimonials = [
 
     <section>
       <div
-        class="bg-primary py-28 flex flex-col gap-6 items-center justify-center"
+        class="bg-primary py-28 px-6 flex flex-col gap-6 items-center justify-center"
       >
         <h2 class="text-white text-4xl">Ready to Advance Your Career?</h2>
         <p class="text-white text-lg">
