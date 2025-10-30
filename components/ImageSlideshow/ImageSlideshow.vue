@@ -52,7 +52,7 @@ onUnmounted(() => {
       @mouseenter="stopAutoPlay"
       @mouseleave="startAutoPlay"
     >
-      <div class="relative overflow-hidden shadow-2xl aspect-[16/6]">
+      <div class="relative overflow-hidden shadow-2xl aspect-[16/5]">
         <TransitionGroup name="slide-fade">
           <div
             v-for="(image, index) in images"
