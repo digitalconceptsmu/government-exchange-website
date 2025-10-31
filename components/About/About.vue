@@ -134,7 +134,7 @@ const testimonials = [
   <div id="about">
     <section class="py-16 lg:px-14 bg-white">
       <div class="container mx-auto px-4">
-        <div class="grid lg:grid-cols-2 gap-36 items-start">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-36 items-start">
           <div class="space-y-6">
             <h2 class="text-4xl">About us</h2>
             <p class="text-gray-700 leading-relaxed">The training division of the Centre for Parliamentary Studies, providing excellence in public service education</p>
@@ -183,7 +183,7 @@ const testimonials = [
 
           <div class="lg:top-8">
             <img
-              src="/images/about_us1.png"
+              src="/images/about_us_new.png"
               alt="Government Exchange Brochure"
               class="rounded-lg shadow-lg"
             />
@@ -192,10 +192,10 @@ const testimonials = [
       </div>
     </section>
 
-    <section class="py-16 bg-gray-50">
+    <section class="py-6 lg:py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto mb-12">
-          <h2 class="text-5xl text-gray-900 mb-4">Our Values</h2>
+          <h2 class="text-4xl lg:text-5xl text-gray-900 mb-4">Our Values</h2>
           <p class="text-lg text-gray-600">
             We are at the forefront of thinking in Government and skills
             development
@@ -206,7 +206,7 @@ const testimonials = [
           <div
             v-for="(value, index) in values"
             :key="index"
-            class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center lg:items-start"
           >
             <div
               class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
