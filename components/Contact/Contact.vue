@@ -21,11 +21,26 @@ const formData = ref({
   phone: "",
   email: "",
   organisation: "",
+  trainingRequirement: "",
   message: "",
 });
 
 const handleSubmit = () => {
-  // TODO : logic to submit contact form
+  const recipient = "sam.gani@governmentexchange.co.uk";
+  const subject = `Contact Form: ${formData.value.trainingRequirement}`;
+  const body = `
+Name: ${formData.value.name}
+Phone: ${formData.value.phone}
+Email: ${formData.value.email}
+Organisation: ${formData.value.organisation}
+Training Requirement: ${formData.value.trainingRequirement}
+
+Message:
+${formData.value.message}
+  `.trim();
+
+  const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoLink;
 };
 </script>
 
@@ -131,6 +146,16 @@ const handleSubmit = () => {
                   v-model="formData.organisation"
                   type="text"
                   placeholder="Organisation*"
+                  required
+                  class="w-full"
+                />
+              </div>
+
+              <div>
+                <Input
+                  v-model="formData.trainingRequirement"
+                  type="text"
+                  placeholder="Training Requirement*"
                   required
                   class="w-full"
                 />

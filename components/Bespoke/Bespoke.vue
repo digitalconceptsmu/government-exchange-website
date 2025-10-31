@@ -140,24 +140,6 @@ const clients = [
 
           <div class="mt-12 border-2 border-primary rounded-lg p-8 space-y-6">
             <p class="text-gray-700">
-              We can also provide training on any current public policy issue in
-              partnership with our sister organisation
-              <a
-                href="https://publicpolicyexchange.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-primary hover:underline font-medium"
-                >Public Policy Exchange</a
-              >.
-            </p>
-
-            <p class="text-gray-700">
-              All our bespoke training is CPD accredited. The training can
-              either be held at your organisation's premises, or at one of our
-              own high quality training centres.
-            </p>
-
-            <p class="text-gray-700">
               Our training development team possess many years experience of
               developing tailor made courses to the highest possible standard,
               and would be more than happy to discuss any training needs that
@@ -168,6 +150,27 @@ const clients = [
               >
                 enquiry@governmentexchange.org
               </a>
+            </p>
+
+            <p class="text-gray-700">
+              All our bespoke training is
+              <span class="text-primary">CPD accredited</span>
+              . The training can
+              either be held at your organisation's premises, or at one of our
+              own high quality training centres.
+            </p>
+
+            <p class="text-gray-700">
+              We can also provide training on any current public policy issue in
+              partnership with our sister organisation
+              <a
+                href="https://publicpolicyexchange.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary hover:underline font-medium"
+              >
+                Public Policy Exchange
+              </a>.
             </p>
           </div>
         </div>
