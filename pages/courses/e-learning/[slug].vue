@@ -122,7 +122,7 @@ useHead({
   <div class="min-h-screen bg-gray-50">
     <Navigation />
     <main>
-      <div class="text-white py-16 relative overflow-hidden">
+      <div class="text-white py-8 md:py-12 lg:py-16 relative overflow-hidden">
         <div
           class="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style="background-image: url('/images/banner/in_hourse_training.jpg')"
@@ -133,7 +133,7 @@ useHead({
         <div class="container mx-auto px-4 max-w-7xl relative z-10">
           <div class="mb-4">
           </div>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-4">E-Learning Courses</h1>
+          <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">E-Learning Courses</h1>
           <div class="flex items-center gap-2 text-white/80 text-sm">
             <NuxtLink to="/" class="hover:text-white">Home</NuxtLink>
             <span>-</span>
@@ -142,24 +142,24 @@ useHead({
         </div>
       </div>
 
-      <div class="container mx-auto px-4 max-w-7xl py-12">
-        <div class="grid lg:grid-cols-3 gap-8">
-          <div class="lg:col-span-2 space-y-8">
+      <div class="container mx-auto px-4 max-w-7xl py-6 md:py-8 lg:py-12">
+        <div class="grid lg:grid-cols-3 gap-6 md:gap-8">
+          <div class="lg:col-span-2 space-y-6 md:space-y-8">
             <section>
-              <h2 class="text-3xl text-gray-900 mb-6">
+              <h2 class="text-xl md:text-2xl lg:text-3xl text-gray-900 mb-4 md:mb-6">
                 {{ course.title }}
               </h2>
               <p class="text-gray-700 leading-relaxed mb-6">
                 {{ course.description }}
               </p>
 
-              <div class="bg-primary rounded-lg p-12 mb-8">
-                <div class="flex items-center gap-8">
+              <div class="bg-primary rounded-lg p-6 md:p-8 lg:p-12 mb-8">
+                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                   <!-- Left: Card -->
-                  <div class="flex-shrink-0">
-                    <div class="bg-white rounded-2xl p-8 shadow-2xl w-72">
+                  <div class="flex-shrink-0 w-full md:w-auto">
+                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-2xl max-w-xs mx-auto md:w-72">
                       <div class="text-center">
-                        <div class="text-2xl font-bold text-primary mb-2">
+                        <div class="text-xl md:text-2xl font-bold text-primary mb-2">
                           Government<br>Exchange
                         </div>
                         <div class="text-sm text-gray-600 font-medium">Professional Development</div>
@@ -168,12 +168,12 @@ useHead({
                   </div>
 
                   <!-- Right: Images Grid -->
-                  <div class="flex-1">
-                    <div class="grid grid-cols-3 gap-6">
+                  <div class="flex-1 w-full">
+                    <div class="grid grid-cols-3 gap-3 md:gap-4 lg:gap-6 max-w-md md:max-w-none mx-auto">
                       <div
                         v-for="i in 6"
                         :key="i"
-                        class="aspect-square rounded-full overflow-hidden border-4 border-white/20"
+                        class="aspect-square rounded-full overflow-hidden border-2 md:border-4 border-white/20"
                       >
                         <img
                           :src="`/images/course-details/Hero ${i}.jpeg`"
@@ -187,8 +187,8 @@ useHead({
               </div>
             </section>
 
-            <section class="bg-white border rounded-xl shadow-sm p-8">
-              <h3 class="text-2xl text-gray-900 mb-6">
+            <section class="bg-white border rounded-xl shadow-sm p-4 md:p-6 lg:p-8">
+              <h3 class="text-xl md:text-2xl text-gray-900 mb-4 md:mb-6">
                 Course Description
               </h3>
               <div class="space-y-4 mb-6">
@@ -212,15 +212,15 @@ useHead({
               </ul>
             </section>
 
-            <section class="bg-white border rounded-xl shadow-sm p-8">
-              <h3 class="text-2xl text-gray-900 mb-6">Certification</h3>
+            <section class="bg-white border rounded-xl shadow-sm p-4 md:p-6 lg:p-8">
+              <h3 class="text-xl md:text-2xl text-gray-900 mb-4 md:mb-6">Certification</h3>
               <p class="text-gray-700 leading-relaxed">
                 {{ course.certification }}
               </p>
             </section>
 
-            <section class="bg-white border rounded-xl shadow-sm p-8">
-              <h3 class="text-2xl text-gray-900 mb-6">
+            <section class="bg-white border rounded-xl shadow-sm p-4 md:p-6 lg:p-8">
+              <h3 class="text-xl md:text-2xl text-gray-900 mb-4 md:mb-6">
                 Learning Outcomes
               </h3>
               <div class="space-y-6">
@@ -249,8 +249,8 @@ useHead({
 
             <section>
               <div class="flex items-center justify-between mb-6">
-                <h3 class="text-2xl text-gray-900">Related Courses</h3>
-                <div class="flex gap-2">
+                <h3 class="text-xl md:text-2xl text-gray-900">Related Courses</h3>
+                <div class="hidden md:flex gap-2">
                   <button
                     class="w-10 h-10 rounded bg-yellow-500 hover:bg-yellow-600 text-white flex items-center justify-center"
                   >
@@ -263,7 +263,7 @@ useHead({
                   </button>
                 </div>
               </div>
-              <div class="grid md:grid-cols-3 gap-6">
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <div
                   v-for="(related, index) in course.relatedCourses"
                   :key="index"
@@ -276,14 +276,14 @@ useHead({
                       class="w-full h-full object-cover"
                     />
                   </div>
-                  <div class="p-6 flex flex-col flex-grow">
-                    <h4 class="font-semibold text-gray-900 mb-2">
+                  <div class="p-4 md:p-6 flex flex-col flex-grow">
+                    <h4 class="font-semibold text-gray-900 mb-2 text-sm md:text-base">
                       {{ related.title }}
                     </h4>
-                    <p class="text-sm text-gray-600 mb-4">
+                    <p class="text-xs md:text-sm text-gray-600 mb-4">
                       {{ related.description }}
                     </p>
-                    <Button class="w-full bg-yellow-500 hover:bg-yellow-600 mt-auto">
+                    <Button class="w-full bg-yellow-500 hover:bg-yellow-600 mt-auto text-xs md:text-sm">
                       LEARN MORE
                     </Button>
                   </div>
@@ -293,9 +293,9 @@ useHead({
           </div>
 
           <div class="lg:col-span-1">
-            <div class="space-y-6 sticky top-32">
-              <div class="bg-white rounded-xl border shadow-sm p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-6">
+            <div class="space-y-6 lg:sticky lg:top-32">
+              <div class="bg-white rounded-xl border shadow-sm p-4 md:p-6">
+                <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-4 md:mb-6">
                   Annual Licenses
                 </h3>
                 <div class="space-y-4">
@@ -310,20 +310,20 @@ useHead({
                 </div>
               </div>
 
-              <div class="bg-gray-100 rounded-xl border p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              <div class="bg-gray-100 rounded-xl border p-4 md:p-6">
+                <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">
                   {{ course.freeEvaluation.title }}
                 </h3>
-                <p class="text-sm text-gray-700 leading-relaxed mb-6">
+                <p class="text-xs md:text-sm text-gray-700 leading-relaxed mb-4 md:mb-6">
                   {{ course.freeEvaluation.description }}
                 </p>
                 <div class="space-y-3">
-                  <Button class="w-full bg-yellow-500 hover:bg-yellow-600" size="lg">
+                  <Button class="w-full bg-yellow-500 hover:bg-yellow-600 text-sm md:text-base" size="lg">
                     LEARN MORE
                   </Button>
                   <Button
                     variant="secondary"
-                    class="w-full bg-gray-700 hover:bg-gray-800 text-white"
+                    class="w-full bg-gray-700 hover:bg-gray-800 text-white text-sm md:text-base"
                     size="lg"
                   >
                     ENROLL NOW

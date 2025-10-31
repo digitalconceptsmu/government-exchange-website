@@ -100,7 +100,7 @@ const upcomingCourses: {
               :key="index"
               class="border-b border-gray-200 last:border-b-0"
             >
-              <div class="flex justify-between items-center px-8 py-6 hover:bg-gray-50 transition-colors group">
+              <div class="flex justify-between items-center px-4 lg:px-8 py-6 hover:bg-gray-50 transition-colors group">
                 <h3 class="font-medium text-gray-900">
                   <NuxtLink
                     v-if="course.slug"
@@ -111,8 +111,8 @@ const upcomingCourses: {
                   </NuxtLink>
                   <span v-else>{{ course.title }}</span>
                 </h3>
-                <div class="flex items-center gap-2 text-gray-600 text-sm flex-shrink-0 ml-8">
-                  <Calendar class="w-4 h-4" />
+                <div class="flex items-center w-20 lg:w-auto gap-2 text-gray-600 text-sm flex-shrink-0 ml-8">
+                  <Calendar class="w-4 h-4 hidden lg:block" />
                   <span>{{ course.date }}</span>
                 </div>
               </div>
@@ -134,7 +134,7 @@ const upcomingCourses: {
               :key="index"
               class="border-b border-gray-200 last:border-b-0"
             >
-              <div class="flex justify-between items-center px-8 py-6 hover:bg-gray-50 transition-colors group">
+              <div class="flex justify-between items-center px-4 lg:px-8 py-6 hover:bg-gray-50 transition-colors group">
                 <h3 class="font-medium text-gray-900">
                   <NuxtLink
                     v-if="course.slug"
@@ -145,8 +145,8 @@ const upcomingCourses: {
                   </NuxtLink>
                   <span v-else>{{ course.title }}</span>
                 </h3>
-                <div class="flex items-center gap-2 text-gray-600 text-sm flex-shrink-0 ml-8">
-                  <Calendar class="w-4 h-4" />
+                <div class="flex items-center w-20 lg:w-auto gap-2 text-gray-600 text-sm flex-shrink-0 ml-8">
+                  <Calendar class="w-4 h-4 hidden lg:block" />
                   <span>{{ course.date }}</span>
                 </div>
               </div>

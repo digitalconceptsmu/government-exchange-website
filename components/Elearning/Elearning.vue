@@ -101,7 +101,7 @@ const currentCourses = computed(() => {
 </script>
 
 <template>
-  <section class="py-20 bg-white">
+  <section class="py-4 lg:py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-7xl mx-auto">
         <div class="flex gap-4 mb-8 border-b pb-8 justify-center border-gray-200">
@@ -111,7 +111,7 @@ const currentCourses = computed(() => {
               :key="tab.id"
               @click="activeTab = tab.id"
               :class="[
-                'px-6 py-3 font-medium text-sm transition-colors relative',
+                'px-2 lg:px-6 py-3 font-normal lg:font-medium text-sm transition-colors relative',
                 activeTab === tab.id
                 ? 'text-primary border-b-2 border-primary'
                 : 'text-gray-500 hover:text-gray-700',

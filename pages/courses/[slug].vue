@@ -328,8 +328,8 @@ useHead({
         <div class="container mx-auto px-4 max-w-7xl py-12">
           <div class="grid lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 space-y-8">
-              <section class="bg-white border rounded-xl shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+              <section class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                   Course Overview
                 </h2>
 
@@ -360,8 +360,8 @@ useHead({
                 </div>
               </section>
 
-              <section v-if="course.speakers && course.speakers.length > 0" class="bg-white rounded-xl border shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+              <section v-if="course.speakers && course.speakers.length > 0" class="bg-white rounded-xl border shadow-sm p-4 lg:p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                   Distinguished Speakers:
                 </h2>
                 <div class="space-y-4">
@@ -380,8 +380,8 @@ useHead({
                 </div>
               </section>
 
-              <section class="bg-white border rounded-xl shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+              <section class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                   Interview With One of the Training Experts
                 </h2>
                 <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
@@ -394,8 +394,8 @@ useHead({
                 </div>
               </section>
 
-              <section class="bg-white border rounded-xl shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+              <section class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                   Learning Outcomes
                 </h2>
                 <div class="space-y-4">
@@ -410,15 +410,15 @@ useHead({
                 </div>
               </section>
 
-              <section class="bg-white border rounded-xl shadow-sm p-8">
-                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+              <section class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                   Agenda
                 </h2>
                 <div class="space-y-6">
                   <div
                     v-for="(item, index) in course.agenda"
                     :key="index"
-                    class="border-l-4 border-primary pl-6 py-2"
+                    class="border-l-2 lg:border-l-4 border-primary pl-6 py-2"
                   >
                     <div class="flex items-center gap-3 mb-2">
                       <span
@@ -446,7 +446,7 @@ useHead({
                 </div>
               </section>
 
-              <section class="rounded-lg p-8 text-white text-center">
+              <section class="rounded-lg p-4 lg:p-8 text-white text-center">
                 <div class="relative inline-block" ref="dropdown2Ref">
                   <Button
                     size="xl"
@@ -487,15 +487,15 @@ useHead({
 
             <div class="lg:col-span-1">
               <div class="space-y-6 sticky top-32">
-                <div v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
-                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                <div v-if="course.testimonials && course.testimonials.length > 0" class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                     What Learners Say
                   </h2>
                   <div class="space-y-4">
                     <div
                       v-for="(testimonial, index) in course.testimonials"
                       :key="index"
-                      class="border-l-4 border-primary pl-4 py-2"
+                      class="border-l-2 lg:border-l-4 border-primary pl-4 py-2"
                     >
                       <p class="text-sm text-gray-700 italic mb-2">
                         "{{ testimonial.quote }}"
@@ -505,8 +505,8 @@ useHead({
                   </div>
                 </div>
 
-                <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
-                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                     Related Courses
                   </h2>
                   <div class="space-y-3">
@@ -522,8 +522,8 @@ useHead({
                   </div>
                 </div>
 
-                <div class="bg-white border rounded-xl shadow-sm p-6">
-                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                <div class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                     Need More Information?
                   </h2>
                   <p class="text-gray-700 mb-6">
@@ -551,8 +551,8 @@ useHead({
                   </div>
                 </div>
 
-                <div v-if="course.accreditation" class="bg-white border rounded-xl shadow-sm p-6">
-                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                <div v-if="course.accreditation" class="bg-white border rounded-xl shadow-sm p-4 lg:p-8">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-2 lg:border-b-4 border-primary">
                     {{ course.accreditation.title }}
                   </h2>
                   <div class="mb-6">
