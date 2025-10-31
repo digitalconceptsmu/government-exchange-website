@@ -324,7 +324,7 @@ const courseCategories = [
                   </h4>
                   <div class="flex items-center gap-2 text-sm text-gray-600">
                     <span v-if="course.date">{{ course.date }}</span>
-                    <span v-else class="text-gray-500">No events currently planned</span>
+                    <span v-else class="text-gray-500">Indicate your interest</span>
                   </div>
                 </div>
               </div>

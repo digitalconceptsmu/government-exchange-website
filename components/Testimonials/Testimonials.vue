@@ -76,7 +76,7 @@ const updateWindowWidth = () => {
 };
 
 const itemsPerSlide = computed(() => {
-  return windowWidth.value < 768 ? 1 : 6;
+  return windowWidth.value < 768 ? 1 : 3;
 });
 
 const totalSlides = computed(() => {
@@ -149,7 +149,7 @@ onUnmounted(() => {
         </p>
       </div>
 
-      <div class="relative max-w-7xl mx-auto">
+      <div class="relative max-w-8xl mx-auto">
         <button 
           @click="prevSlide"
           class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 lg:-translate-x-8 z-10 bg-white rounded-full p-2 lg:p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
@@ -166,16 +166,19 @@ onUnmounted(() => {
           <ChevronRight class="w-5 h-5 lg:w-6 lg:h-6 text-gray-700" />
         </button>
 
-        <div class="overflow-hidden">
+        <div class="overflow-hidden flex justify-center">
           <transition :name="slideDirection === 'next' ? 'slide-next' : 'slide-prev'" mode="out-in">
-            <div :key="currentSlide" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div 
+              :key="currentSlide" 
+              class="flex flex-nowrap gap-6 lg:gap-2 w-11/12 "
+            >
               <div
                 v-for="(testimonial, index) in currentTestimonials"
                 :key="index"
-                class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+                class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex-none w-full md:w-1/2 lg:w-1/3"
               >
                 <div class="mb-6 flex items-start">
-                  <p class="text-gray-900 italic">"{{ testimonial.quote }}"</p>
+                  <p class="text-gray-900 italic flex-1">"{{ testimonial.quote }}"</p>
                   <div class="bg-primary/10 p-3 rounded-full">
                     <Quote class="w-6 h-6 text-primary" />
                   </div>
@@ -228,7 +231,7 @@ onUnmounted(() => {
 .slide-next-leave-active,
 .slide-prev-enter-active,
 .slide-prev-leave-active {
-  transition: all 0.6s ease;
+  transition: all 0.3s ease;
 }
 
 .slide-next-enter-from {
