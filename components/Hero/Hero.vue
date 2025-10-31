@@ -4,9 +4,9 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { Button } from "~/components/ui/button";
 
 const images = [
-  "/images/image 1.png",
-  "/images/image 2.png",
-  "/images/image 3.png",
+  "/images/hero/image 1.png",
+  "/images/hero/image 2.png",
+  "/images/hero/image 3.png",
 ];
 
 const currentImageIndex = ref(0);
@@ -51,19 +51,24 @@ const goToSlide = (index: number) => {
           </p>
 
           <div class="flex flex-wrap gap-4 pt-4">
-            <Button
-              size="lg"
-              variant="light"
-            >
-              Explore Courses
-              <ArrowRight class="ml-2 w-5 h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="light"
-            >
-              Contact Us
-            </Button>
+            <NuxtLink to="/courses">
+              <Button
+                size="lg"
+                variant="light"
+              >
+                Explore Courses
+                <ArrowRight class="ml-2 w-5 h-5" />
+              </Button>
+            </NuxtLink>
+
+            <NuxtLink to="/contact">
+              <Button
+                size="lg"
+                variant="light"
+              >
+                Contact Us
+              </Button>
+            </NuxtLink>
           </div>
         </div>
 

@@ -2,6 +2,13 @@
 import { CheckCircle } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
 
+const toSlug = (s: string) =>
+  s
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+
 const keyFeatures = [
   "Training and learning days with free core 'Life and Social Competence Framework'",
   "Expert speakers led by experienced trainers with specialist knowledge",
@@ -9,7 +16,7 @@ const keyFeatures = [
   "For an extra cost you receive one to one coaching, enabling you to improve the increase in your knowledge and skills resulting from the training (Education Plus 1 or 2)",
   "Up to 24 hours supplementary reading resources",
   "Learning is relevant, timely and immediately applicable",
-  "Courses speakers include senior MPs, Lords and Government officials",
+  "Courses speakers include senior MPs, Lords and Government icials",
   "All our courses offer Certificate of Personal Development and gain a thorough understanding",
   "Comprehensive reading resources",
 ];
@@ -290,6 +297,7 @@ const courseCategories = [
         <div
           v-for="(category, categoryIndex) in courseCategories"
           :key="categoryIndex"
+          :id="toSlug(category.title)"
           class="bg-white rounded-lg shadow-sm overflow-hidden"
         >
           <div class="bg-primary text-white px-6 py-4">

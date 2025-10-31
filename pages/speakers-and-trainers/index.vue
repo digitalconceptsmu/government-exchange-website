@@ -13,7 +13,7 @@ useHead({
     <main>
       <Header
         title="Speakers & Trainers"
-        background-image="/images/uk_events.jpg"
+        background-image="/images/banner/uk_events.jpg"
       />
       <SpeakersAndTrainers />
     </main>

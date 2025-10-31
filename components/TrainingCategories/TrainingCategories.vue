@@ -9,6 +9,13 @@ import {
   Users2,
 } from "lucide-vue-next";
 
+const toSlug = (s: string) =>
+  s
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+
 const categories = [
   {
     icon: Building2,
@@ -84,15 +91,15 @@ const categories = [
           <p class="text-gray-600 text-sm mb-6 flex-grow">
             {{ category.description }}
           </p>
-          <a
-            hef="#"
+          <NuxtLink
+            :to="`/courses#${toSlug(category.title)}`"
             class="text-primary text-sm font-medium inline-flex items-center hover:underline group/link mt-auto"
           >
             Learn More
             <ArrowRight
               class="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform"
             />
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>

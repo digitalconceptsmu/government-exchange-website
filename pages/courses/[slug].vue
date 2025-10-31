@@ -206,7 +206,7 @@ const courseData: Record<string, any> = {
     ],
     accreditation: {
       title: "Accredited By",
-      logo: "/images/institute-of-leadership.png",
+      logo: "/images/logos/institute-of-leadership.png",
       description: "The Institute of Leadership has approved this training course. The Institute combines years of research, knowledge and innovation to champion the leadership agenda for aLL and since 1947 they have carried out extensive research into the knowledge, skills, attitudes, behaviours and values of great leadership. Based on The Institute's core leadership values, this course meets the standard that enables learners who have completed to access the following benefits:",
       benefits: [
         { text: "Membership of The Institute of Leadership will be in receipt of an ICPS/The Institute joint Certificate of achievement for the course" },
@@ -251,7 +251,7 @@ useHead({
         <div class="text-white py-16 relative overflow-hidden">
           <div
             class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style="background-image: url('/images/video_meeting.png')"
+            style="background-image: url('/images/course-details/video_meeting.png')"
           ></div>
 
           <div class="absolute inset-0 bg-primary/90"></div>

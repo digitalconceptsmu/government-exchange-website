@@ -13,7 +13,7 @@ const title = ref('Bespoke Training');
   <div class="min-h-screen bg-background">
     <Navigation />
     <main>
-      <Header :title="title" background-image="/images/image012.jpg" />
+      <Header :title="title" background-image="/images/banner/image012.jpg" />
       <Bespoke />
     </main>
     <Footer />

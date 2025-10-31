@@ -16,7 +16,7 @@ useHead({
     <main>
       <Header
         title="Speaker Details"
-        background-image="/images/eu_events.jpg"
+        background-image="/images/banner/eu_events.jpg"
         size="sm"
       />
       <SpeakerDetail :speaker-id="speakerId" />

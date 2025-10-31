@@ -271,7 +271,7 @@ const contactInfo = {
   <div class="min-h-screen bg-gray-50">
     <Navigation />
     <main>
-      <Header title="Privacy Policy" background-image="/images/privacy_policy.jpg" />
+      <Header title="Privacy Policy" background-image="/images/banner/privacy_policy.jpg" />
       <div class="container mx-auto px-4 max-w-4xl py-12">
         <div class="bg-white rounded-xl shadow-sm p-8 lg:p-12">
           <div class="prose prose-gray max-w-none space-y-12">

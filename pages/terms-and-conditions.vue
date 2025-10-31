@@ -14,7 +14,7 @@ useHead({
   <div class="min-h-screen bg-gray-50">
     <Navigation />
     <main>
-      <Header title="Terms & Conditions" background-image="/images/terms_and_conditions.jpg" />
+      <Header title="Terms & Conditions" background-image="/images/banner/terms_and_conditions.jpg" />
 
       <div class="container mx-auto px-4 max-w-4xl py-12">
         <div class="bg-white rounded-xl shadow-sm p-8 lg:p-12">

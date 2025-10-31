@@ -125,7 +125,7 @@ useHead({
       <div class="text-white py-16 relative overflow-hidden">
         <div
           class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style="background-image: url('/images/in_hourse_training.jpg')"
+          style="background-image: url('/images/banner/in_hourse_training.jpg')"
         ></div>
 
         <div class="absolute inset-0 bg-primary/90"></div>
@@ -176,7 +176,7 @@ useHead({
                         class="aspect-square rounded-full overflow-hidden border-4 border-white/20"
                       >
                         <img
-                          :src="`/images/Hero ${i}.jpeg`"
+                          :src="`/images/course-details/Hero ${i}.jpeg`"
                           alt="Course illustration"
                           class="w-full h-full object-cover"
                         />

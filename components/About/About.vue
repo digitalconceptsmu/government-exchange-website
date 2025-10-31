@@ -183,7 +183,7 @@ const testimonials = [
 
           <div class="lg:top-8">
             <img
-              src="../../public/images/about_us1.png"
+              src="/images/about_us1.png"
               alt="Government Exchange Brochure"
               class="rounded-lg shadow-lg"
             />
