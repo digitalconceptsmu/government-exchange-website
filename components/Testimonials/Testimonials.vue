@@ -111,7 +111,7 @@ const startAutoPlay = () => {
     if (isAutoPlaying.value) {
       nextSlide();
     }
-  }, 4000);
+  }, 5000);
 };
 
 const toggleAutoPlay = () => {

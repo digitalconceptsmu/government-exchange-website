@@ -125,7 +125,6 @@ const testimonials = [
 ];
 
 const currentSlide = ref(0);
-// const autoPlayInterval = ref<NodeJS.Timeout | null>(null);
 const autoPlayInterval = ref<ReturnType<typeof setInterval> | null>(null);
 const isAutoPlaying = ref(true);
 const slideDirection = ref('next');
@@ -171,7 +170,7 @@ const startAutoPlay = () => {
     if (isAutoPlaying.value) {
       nextSlide();
     }
-  }, 4000);
+  }, 5000);
 };
 
 const toggleAutoPlay = () => {
@@ -404,14 +403,24 @@ onUnmounted(() => {
       <div
         class="bg-primary py-28 px-6 flex flex-col gap-6 items-center justify-center"
       >
-        <h2 class="text-white text-4xl">Ready to Advance Your Career?</h2>
-        <p class="text-white text-lg">
-          Join thousands of civil servants who have enhanced their skills
-          through our training programs
+        <NuxtLink to="/courses">
+          <Button variant="light" size="xl">View Course list</Button>
+        </NuxtLink>
+
+        <p class="text-white mt-4">
+          Have questions or need more information? Get in touch with us
         </p>
         <div class="flex items-center gap-4">
-          <Button variant="light" size="xl">View Course list</Button>
-          <Button variant="outline" size="xl">Contact us</Button>
+          <a
+            href="mailto:enquiry@governmentexchange.org"
+          >
+            <Button variant="light" size="xl">Email Us</Button>
+          </a>
+          <a
+            href="tel:02031378632"
+          >
+            <Button variant="outline" size="xl">Contact us</Button>
+          </a>
         </div>
       </div>
     </section>

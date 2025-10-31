@@ -21,23 +21,22 @@ const trainingAreas = [
 ];
 
 const clients = [
-  { name: "Bioscience for the Future", logo: "/images/BespokeClients/bioscience-for-the-future.jpg" },
-  { name: "Department for Children", logo: "/images/BespokeClients/dpt-children.jpg" },
-  { name: "Department for Education", logo: "/images/BespokeClients/DepartmentforEducation.jpg" },
-  { name: "Department of Health", logo: "/images/BespokeClients/department-of-health.jpg" },
-  { name: "Defra", logo: "/images/BespokeClients/defra.jpg" },
-  { name: "DLA Piper", logo: "/images/BespokeClients/dla-piper.jpg" },
-  { name: "Essex County Council", logo: "/images/BespokeClients/EssexCountyCouncil.png" },
-  { name: "General Social Care Council", logo: "/images/BespokeClients/general-social-care-council.jpg" },
-  { name: "Home Office", logo: "/images/BespokeClients/home-office.jpg" },
-  { name: "Herbert Smith", logo: "/images/BespokeClients/herbert-smith.jpg" },
-  { name: "Intellectual Property Office", logo: "/images/BespokeClients/IntellectualPropertyOffice.png" },
-  { name: "MAG", logo: "/images/BespokeClients/MAG.jpg" },
-  { name: "Ministry of Justice", logo: "/images/BespokeClients/ministry-of-justice.jpg" },
-  { name: "Ofcom", logo: "/images/BespokeClients/ofcom.jpg" },
-  { name: "Ofgem", logo: "/images/BespokeClients/ofgem.jpg" },
-  { name: "Science and Tech Facilities Council", logo: "/images/BespokeClients/ScienceAndTechFacilitiesCouncil.png" },
-  { name: "Wokingham Borough Council", logo: "/images/BespokeClients/wokingham-borough-council.jpg" },
+  { name: "Home Office", logo: "/images/bespoke-clients/home-office.png", url: "https://www.gov.uk/government/organisations/home-office" },
+  { name: "Department for Education", logo: "/images/bespoke-clients/DepartmentforEducation.png", url: "https://www.gov.uk/government/organisations/department-for-education" },
+  { name: "Essex County Council", logo: "/images/bespoke-clients/EssexCountyCouncil.png", url: "https://www.essex.gov.uk/" },
+  { name: "Defra", logo: "/images/bespoke-clients/defra.png", url: "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs" },
+  { name: "Department of Health", logo: "/images/bespoke-clients/department-of-health.png", url: "https://www.gov.uk/government/organisations/department-of-health-and-social-care" },
+  { name: "Ministry of Justice", logo: "/images/bespoke-clients/ministry-of-justice.png", url: "https://www.justice.gov.uk/?redirected" },
+  { name: "Intellectual Property Office", logo: "/images/bespoke-clients/IntellectualPropertyOffice.png", url: "https://www.gov.uk/government/organisations/intellectual-property-office" },
+  { name: "Department for Children", logo: "/images/bespoke-clients/dpt-children.png", url: "http://www.dcsf.gov.uk/" },
+  { name: "DLA Piper", logo: "/images/bespoke-clients/dla-piper.png", url: "https://www.dlapiper.com/en-us" },
+  { name: "General Social Care Council", logo: "/images/bespoke-clients/general-social-care-council.png", url: "http://www.gscc.org.uk/" },
+  { name: "Herbert Smith", logo: "/images/bespoke-clients/herbert-smith.png", url: "http://www.herbertsmith.com/" },
+  { name: "MAG", logo: "/images/bespoke-clients/MAG.png", url: "https://www.magairports.com/" },
+  { name: "Ofgem", logo: "/images/bespoke-clients/ofgem.png", url: "https://www.ofgem.gov.uk/" },
+  { name: "Science and Tech Facilities Council", logo: "/images/bespoke-clients/ScienceAndTechFacilitiesCouncil.png", url: "https://www.ukri.org/councils/stfc/" },
+  { name: "Wokingham Borough Council", logo: "/images/bespoke-clients/wokingham-borough-council.png", url: "https://www.wokingham.gov.uk/" },
+  { name: "Bioscience for the Future", logo: "/images/bespoke-clients/bioscience-for-the-future.png", url: "https://www.ukri.org/councils/bbsrc/" },
 ];
 </script>
 
@@ -166,8 +165,9 @@ const clients = [
               <a
                 href="mailto:enquiry@governmentexchange.org"
                 class="text-primary hover:underline font-medium"
-                >enquiry@governmentexchange.org</a
               >
+                enquiry@governmentexchange.org
+              </a>
             </p>
           </div>
         </div>
@@ -184,7 +184,7 @@ const clients = [
             </div>
 
             <p class="text-gray-600 mb-6">
-              Some of the organisations we have recently provided bespoke
+              Some of the organisations we have provided bespoke
               training for are:
             </p>
 
@@ -194,11 +194,15 @@ const clients = [
                 :key="index"
                 class="bg-white rounded-lg p-4 border border-gray-200 hover:border-primary hover:shadow-md transition-all flex items-center justify-center"
               >
-                <img
-                  :src="client.logo"
-                  :alt="client.name"
-                  class="w-full h-auto max-h-20 object-contain"
-                />
+                <a
+                  :href="client.url"
+                >
+                  <img
+                    :src="client.logo"
+                    :alt="client.name"
+                    class="w-full h-auto max-h-20 object-contain"
+                  />
+                </a>
               </div>
             </div>
           </div>
