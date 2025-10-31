@@ -205,7 +205,7 @@ const courseData: Record<string, any> = {
       },
     ],
     accreditation: {
-      title: "Accredited By",
+      title: "This course has been approved by",
       logo: "/images/logos/institute-of-leadership.png",
       description: "The Institute of Leadership has approved this training course. The Institute combines years of research, knowledge and innovation to champion the leadership agenda for aLL and since 1947 they have carried out extensive research into the knowledge, skills, attitudes, behaviours and values of great leadership. Based on The Institute's core leadership values, this course meets the standard that enables learners who have completed to access the following benefits:",
       benefits: [
@@ -505,6 +505,52 @@ useHead({
                   </div>
                 </div>
 
+                <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                    Related Courses
+                  </h2>
+                  <div class="space-y-3">
+                    <NuxtLink
+                      v-for="(relatedCourse, index) in course.relatedCourses"
+                      :key="index"
+                      :to="relatedCourse.link"
+                      class="flex items-center gap-2 text-primary group"
+                    >
+                      <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                      <span class="text-sm hover:underline">{{ relatedCourse.title }}</span>
+                    </NuxtLink>
+                  </div>
+                </div>
+
+                <div class="bg-white border rounded-xl shadow-sm p-6">
+                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
+                    Need More Information?
+                  </h2>
+                  <p class="text-gray-700 mb-6">
+                    Please contact our team for any assistant.
+                  </p>
+                  <div class="space-y-4">
+                    <a
+                      href="tel:02031378632"
+                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <span>020 3137 8632</span>
+                    </a>
+                    <a
+                      href="mailto:enquiry@governmentexchange.org"
+                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      <span>enquiry@governmentexchange.org</span>
+                    </a>
+                  </div>
+                </div>
+
                 <div v-if="course.accreditation" class="bg-white border rounded-xl shadow-sm p-6">
                   <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
                     {{ course.accreditation.title }}
@@ -530,52 +576,6 @@ useHead({
                         <span class="text-sm">{{ benefit.text }}</span>
                       </li>
                     </ul>
-                  </div>
-                </div>
-
-                <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="bg-white border rounded-xl shadow-sm p-6">
-                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                    Related Courses
-                  </h2>
-                  <div class="space-y-3">
-                    <NuxtLink
-                      v-for="(relatedCourse, index) in course.relatedCourses"
-                      :key="index"
-                      :to="relatedCourse.link"
-                      class="flex items-center gap-2 text-primary group"
-                    >
-                      <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
-                      <span class="text-sm hover:underline">{{ relatedCourse.title }}</span>
-                    </NuxtLink>
-                  </div>
-                </div>
-
-                <div class="bg-white border rounded-xl shadow-sm p-6">
-                  <h2 class="text-2xl text-gray-900 mb-6 pb-3 border-b-4 border-primary">
-                    Need More Information?
-                  </h2>
-                  <p class="text-gray-700 mb-6">
-                    Our team is here to answer any questions you may have about this course.
-                  </p>
-                  <div class="space-y-4">
-                    <a
-                      href="tel:02031378632"
-                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
-                    >
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <span>020 3137 8632</span>
-                    </a>
-                    <a
-                      href="mailto:enquiry@governmentexchange.org"
-                      class="flex items-center gap-3 text-gray-700 hover:text-primary transition-colors"
-                    >
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <span>enquiry@governmentexchange.org</span>
-                    </a>
                   </div>
                 </div>
               </div>
