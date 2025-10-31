@@ -174,11 +174,11 @@ onUnmounted(() => {
                 :key="index"
                 class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <blockquote class="text-base mr-8 text-gray-900 mb-6 italic relative z-10">
-                  "{{ testimonial.quote }}"
-                </blockquote>
-                <div class="bg-primary/10 p-3 rounded-full">
-                  <Quote class="w-6 h-6 text-primary" />
+                <div class="mb-6 flex items-start">
+                  <p class="text-gray-900 italic">"{{ testimonial.quote }}"</p>
+                  <div class="bg-primary/10 p-3 rounded-full">
+                    <Quote class="w-6 h-6 text-primary" />
+                  </div>
                 </div>
                 <div class="border-t border-gray-200 pt-4">
                   <p class="font-semibold text-gray-900">{{ testimonial.author }}</p>
