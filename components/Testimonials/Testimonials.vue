@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Quote } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-vue-next';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const testimonials = [
   {
@@ -63,6 +64,63 @@ const testimonials = [
     role: "",
   },
 ]
+
+const currentSlide = ref(0);
+const autoPlayInterval = ref<ReturnType<typeof setInterval> | null>(null);
+const isAutoPlaying = ref(true);
+const slideDirection = ref('next');
+
+const totalSlides = Math.ceil(testimonials.length / 6);
+
+const currentTestimonials = computed(() => {
+  const start = currentSlide.value * 6;
+  return testimonials.slice(start, start + 6);
+});
+
+const nextSlide = () => {
+  slideDirection.value = 'next';
+  currentSlide.value = (currentSlide.value + 1) % totalSlides;
+};
+
+const prevSlide = () => {
+  slideDirection.value = 'prev';
+  currentSlide.value = (currentSlide.value - 1 + totalSlides) % totalSlides;
+};
+
+const goToSlide = (index: number) => {
+  slideDirection.value = index > currentSlide.value ? 'next' : 'prev';
+  currentSlide.value = index;
+};
+
+const startAutoPlay = () => {
+  if (autoPlayInterval.value) {
+    clearInterval(autoPlayInterval.value);
+  }
+  autoPlayInterval.value = setInterval(() => {
+    if (isAutoPlaying.value) {
+      nextSlide();
+    }
+  }, 4000);
+};
+
+const toggleAutoPlay = () => {
+  isAutoPlaying.value = !isAutoPlaying.value;
+  if (isAutoPlaying.value) {
+    startAutoPlay();
+  } else if (autoPlayInterval.value) {
+    clearInterval(autoPlayInterval.value);
+  }
+};
+
+onMounted(() => {
+  startAutoPlay();
+});
+
+onUnmounted(() => {
+  if (autoPlayInterval.value) {
+    clearInterval(autoPlayInterval.value);
+  }
+});
 </script>
 
 <template>
@@ -70,31 +128,112 @@ const testimonials = [
     <div class="container mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
-          Feedback from Participants
+          Feedback from our Participants
         </h2>
         <p class="text-lg text-gray-600">
           Hear from participants who have benefited from our training programs
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <div
-          v-for="(testimonial, index) in testimonials"
-          :key="index"
-          class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative"
+      <div class="relative max-w-7xl mx-auto">
+        <button 
+          @click="prevSlide"
+          class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 lg:-translate-x-8 z-10 bg-white rounded-full p-2 lg:p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+          aria-label="Previous testimonials"
         >
-          <div class="absolute top-6 right-6 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-            <Quote class="w-6 h-6 text-primary" />
+          <ChevronLeft class="w-5 h-5 lg:w-6 lg:h-6 text-gray-700" />
+        </button>
+
+        <button 
+          @click="nextSlide"
+          class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 lg:translate-x-8 z-10 bg-white rounded-full p-2 lg:p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+          aria-label="Next testimonials"
+        >
+          <ChevronRight class="w-5 h-5 lg:w-6 lg:h-6 text-gray-700" />
+        </button>
+
+        <div class="overflow-hidden">
+          <transition :name="slideDirection === 'next' ? 'slide-next' : 'slide-prev'" mode="out-in">
+            <div :key="currentSlide" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              <div
+                v-for="(testimonial, index) in currentTestimonials"
+                :key="index"
+                class="bg-white p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div class="absolute top-6 right-6 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Quote class="w-6 h-6 text-primary" />
+                </div>
+                <blockquote class="text-base mr-8 text-gray-900 mb-6 italic relative z-10">
+                  "{{ testimonial.quote }}"
+                </blockquote>
+                <div class="border-t border-gray-200 pt-4">
+                  <p class="font-semibold text-gray-900">{{ testimonial.author }}</p>
+                  <p v-if="testimonial.role" class="text-sm text-gray-600">{{ testimonial.role }}</p>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+
+        <div class="flex items-center justify-center mt-8 lg:mt-12 space-x-6">
+          <div class="flex space-x-2">
+            <button
+              v-for="index in totalSlides"
+              :key="index"
+              @click="goToSlide(index - 1)"
+              class="w-3 h-3 rounded-full transition-all duration-200"
+              :class="[
+                currentSlide === index - 1 
+                  ? 'bg-primary scale-110' 
+                  : 'bg-gray-200 hover:bg-gray-400'
+              ]"
+              :aria-label="`Go to slide ${index}`"
+            />
           </div>
-          <blockquote class="text-base mr-8 text-gray-900 mb-6 italic relative z-10">
-            "{{ testimonial.quote }}"
-          </blockquote>
-          <div class="border-t border-gray-200 pt-4">
-            <p class="font-semibold text-gray-900">{{ testimonial.author }}</p>
-            <p v-if="testimonial.role" class="text-sm text-gray-600">{{ testimonial.role }}</p>
-          </div>
+
+          <button
+            @click="toggleAutoPlay"
+            class="flex items-center space-x-2 text-sm text-gray-600 hover:text-gray-800 transition-colors duration-200"
+          >
+            <div class="w-8 h-5 bg-gray-300 rounded-full relative transition-colors duration-200"
+                 :class="isAutoPlaying ? 'bg-primary/30' : 'bg-gray-300'">
+              <div class="absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform duration-200 shadow"
+                   :class="isAutoPlaying ? 'translate-x-4' : 'translate-x-0'">
+              </div>
+            </div>
+            <span class="text-xs">{{ isAutoPlaying ? 'Auto' : 'Manual' }}</span>
+          </button>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.slide-next-enter-active,
+.slide-next-leave-active,
+.slide-prev-enter-active,
+.slide-prev-leave-active {
+  transition: all 0.6s ease;
+}
+
+.slide-next-enter-from {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.slide-next-leave-to {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-prev-enter-from {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-prev-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+</style>
