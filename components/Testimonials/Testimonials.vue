@@ -69,22 +69,33 @@ const currentSlide = ref(0);
 const autoPlayInterval = ref<ReturnType<typeof setInterval> | null>(null);
 const isAutoPlaying = ref(true);
 const slideDirection = ref('next');
+const windowWidth = ref(0);
 
-const totalSlides = Math.ceil(testimonials.length / 6);
+const updateWindowWidth = () => {
+  windowWidth.value = window.innerWidth;
+};
+
+const itemsPerSlide = computed(() => {
+  return windowWidth.value < 768 ? 1 : 6;
+});
+
+const totalSlides = computed(() => {
+  return Math.ceil(testimonials.length / itemsPerSlide.value);
+});
 
 const currentTestimonials = computed(() => {
-  const start = currentSlide.value * 6;
-  return testimonials.slice(start, start + 6);
+  const start = currentSlide.value * itemsPerSlide.value;
+  return testimonials.slice(start, start + itemsPerSlide.value);
 });
 
 const nextSlide = () => {
   slideDirection.value = 'next';
-  currentSlide.value = (currentSlide.value + 1) % totalSlides;
+  currentSlide.value = (currentSlide.value + 1) % totalSlides.value;
 };
 
 const prevSlide = () => {
   slideDirection.value = 'prev';
-  currentSlide.value = (currentSlide.value - 1 + totalSlides) % totalSlides;
+  currentSlide.value = (currentSlide.value - 1 + totalSlides.value) % totalSlides.value;
 };
 
 const goToSlide = (index: number) => {
@@ -113,10 +124,13 @@ const toggleAutoPlay = () => {
 };
 
 onMounted(() => {
+  updateWindowWidth();
+  window.addEventListener('resize', updateWindowWidth);
   startAutoPlay();
 });
 
 onUnmounted(() => {
+  window.removeEventListener('resize', updateWindowWidth);
   if (autoPlayInterval.value) {
     clearInterval(autoPlayInterval.value);
   }
@@ -185,7 +199,7 @@ onUnmounted(() => {
               :class="[
                 currentSlide === index - 1 
                   ? 'bg-primary scale-110' 
-                  : 'bg-gray-200 hover:bg-gray-400'
+                  : 'bg-gray-300 hover:bg-gray-400'
               ]"
               :aria-label="`Go to slide ${index}`"
             />
@@ -201,7 +215,7 @@ onUnmounted(() => {
                    :class="isAutoPlaying ? 'translate-x-4' : 'translate-x-0'">
               </div>
             </div>
-            <span class="text-xs">{{ isAutoPlaying ? 'Auto' : 'Manual' }}</span>
+            <span class="text-xs font-medium">{{ isAutoPlaying ? 'Auto' : 'Manual' }}</span>
           </button>
         </div>
       </div>
