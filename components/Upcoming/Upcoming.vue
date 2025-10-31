@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Calendar } from "lucide-vue-next";
+import { Calendar, Mail, Phone } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
 
 interface Course {
@@ -159,21 +159,19 @@ const upcomingCourses: {
             Ready to Register?
           </h3>
           <p class="text-white/90 mb-8 max-w-2xl mx-auto">
-            Secure your place on one of our upcoming courses. For registration inquiries or more information, please get in touch with our team.
+            Secure your place on our upcoming courses. For registration inquiries or more information, please get in touch with our team.
           </p>
           <div class="flex gap-4 justify-center flex-wrap">
-            <Button
-              size="xl"
-              variant="light"
+            <a
+              href="mailto:enquiry@governmentexchange.org"
             >
-              Contact Us
-            </Button>
-            <Button
-              size="xl"
-              variant="outline"
+              <Button variant="light"><Mail /></Button>
+            </a>
+            <a
+              href="tel:02031378632"
             >
-              Call: 020 3137 8632
-            </Button>
+              <Button variant="outline"><Phone /></Button>
+            </a>
           </div>
         </div>
       </div>

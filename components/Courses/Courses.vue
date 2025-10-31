@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckCircle } from "lucide-vue-next";
+import { CheckCircle, Mail, Phone } from "lucide-vue-next";
 import { Button } from "~/components/ui/button";
 
 const toSlug = (s: string) =>
@@ -343,9 +343,17 @@ const courseCategories = [
           Contact us to learn more about upcoming course dates and how we can
           support your professional development needs.
         </p>
-        <div class="flex gap-4 justify-center">
-          <Button size="xl" variant="light">Email Us</Button>
-          <Button size="xl" variant="outline"> Call Us </Button>
+        <div class="flex justify-center gap-4">
+          <a
+            href="mailto:enquiry@governmentexchange.org"
+          >
+            <Button variant="light"><Mail /></Button>
+          </a>
+          <a
+            href="tel:02031378632"
+          >
+            <Button variant="outline"><Phone /></Button>
+          </a>
         </div>
       </div>
     </div>
