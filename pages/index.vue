@@ -18,8 +18,8 @@ useHead({
       <Hero />
       <Features />
       <TrainingCategories />
-      <BespokeTraining />
       <Testimonials />
+      <BespokeTraining />
     </main>
     <Footer />
   </div>
