@@ -114,6 +114,13 @@ const speakers: Speaker[] = [
     bio: 'Jonathan Simcock specializes in leadership development for senior public servants. With a background in organizational psychology and extensive experience in the civil service, he designs and delivers training programs on leadership skills, strategic thinking, and organizational change. His approach combines theoretical frameworks with practical application tailored to the public sector context.'
   },
   {
+    id: 'lord-peter-lilley',
+    name: 'Lord Peter Lilley',
+    title: 'Member of the House of Lords & former Shadow Chancellor of the Exchequer',
+    image: '/images/Speakers/lord-peter-lilley.png',
+    bio: 'Lord Peter Lilley has been a parliamentarian since 1983, serving as an MP until 2017, before moving into the House of Lords in 2018. Peter has held several ministerial positions including Secretary of State for Trade and Industry, Secretary of State for Social Security and Financial Secretary to the Treasury. Other notable positions include Deputy Leader of the Opposition and Shadow Chancellor of the Exchequer'
+  },
+  {
     id: 'tony-lavender',
     name: 'Tony Lavender',
     title: 'Defence and Security Consultant',
