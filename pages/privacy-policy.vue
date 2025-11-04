@@ -252,16 +252,8 @@ const contactInfo = {
   intro: "If you have any queries regarding this policy, or would like to know more about your rights under GDPR, or want to exercise any of your rights under GDPR please contact our GDPR Compliance Team",
   methods: [
     {
-      title: "By phone",
-      content: "Call +44 (0)20 3137 8612"
-    },
-    {
-      title: "By post",
-      content: "FAO the GDPR Compliance Team, International Centre for Parliamentary Studies, Unit N0001,<br>Westminster Business Square, 1-45 Durham Street, London, SE11 5JH"
-    },
-    {
       title: "By email",
-      email: "privacy.ge@governmentexchange.co.uk"
+      email: "enquiry@governmentexchange.org"
     }
   ]
 };
@@ -366,7 +358,6 @@ const contactInfo = {
               <div class="space-y-6 bg-gray-50 rounded-lg p-6">
                 <div v-for="(method, index) in contactInfo.methods" :key="index">
                   <h3 class="font-semibold text-gray-900 mb-2">{{ method.title }}</h3>
-                  <p v-if="method.content" class="text-gray-700" v-html="method.content"></p>
                   <a
                     v-if="method.email"
                     :href="`mailto:${method.email}`"

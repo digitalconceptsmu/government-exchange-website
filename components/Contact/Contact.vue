@@ -61,7 +61,7 @@ ${formData.value.message}
               <div class="flex items-start gap-4">
                 <MapPin class="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div class="text-gray-700 leading-relaxed">
-                  <p>{{ contactInfo.address.name }}</p>
+                  <p class="font-bold">{{ contactInfo.address.name }}</p>
                   <p>{{ contactInfo.address.street }},</p>
                   <p>{{ contactInfo.address.city }},</p>
                   <p>{{ contactInfo.address.postcode }},</p>

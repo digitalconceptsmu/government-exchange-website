@@ -2,10 +2,10 @@
 import { Mail, MapPin, Phone } from "lucide-vue-next";
 
 const companyInfo = {
-  name: "Government Exchange t/a International Centre for Parliamentary Studies",
+  name: "© 2020 Government Exchange is a trading name of the International Centre for Parliamentary Studies.",
   companyNo: "7379667",
   address: "253 Grays Inn Road, London, WC1X 8QT, United Kingdom",
-  vatNo: "VAT No. 997902894",
+  vatNo: "VAT No. 998014288",
   registeredIn: "Registered in England and Wales",
 };
 
