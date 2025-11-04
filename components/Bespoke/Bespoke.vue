@@ -115,7 +115,7 @@ const clients = [
               </h3>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+            <div class="grid md:grid-cols-3 gap-x-8 gap-y-4">
               <template v-for="(area, index) in trainingAreas" :key="index">
                 <div
                   class="flex items-center gap-2 rounded-xl p-4 bg-gray-50"
