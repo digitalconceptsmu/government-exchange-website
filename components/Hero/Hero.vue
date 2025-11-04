@@ -47,7 +47,7 @@ const goToSlide = (index: number) => {
           </p>
 
           <p class="text-lg text-white/90 max-w-xl leading-relaxed">
-            Government Exchange is a leading provider of accredited professional training in the UK. As an organisation that trains Ministers, we are at the forefront of thinking in Government and skills development.
+            Government Exchange is a leading provider of accredited professional training in the UK. As an organisation that trains Ministers, civil servants and public sector professionals, we are at the forefront of thinking in Government and skills development.  
           </p>
 
           <div class="flex flex-wrap gap-4 pt-4">
