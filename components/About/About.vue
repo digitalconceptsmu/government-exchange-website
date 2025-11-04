@@ -198,59 +198,62 @@ onUnmounted(() => {
 
 <template>
   <div id="about">
-    <section class="py-16 px-8 xl:px-14 bg-white">
-      <div class="lg:mx-auto lg:px-4">
-        <div class="about-content">
-          <h2 class="text-4xl mb-6">About us</h2>
+    <section class="py-16 lg:px-14 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-36 items-start">
+          <div class="space-y-6">
+            <h2 class="text-4xl">About us</h2>
+            <p class="text-gray-700 leading-relaxed">The training division of the Centre for Parliamentary Studies, providing excellence in public service education</p>
+     
+            <p class="text-gray-700 leading-relaxed">
+              Government Exchange is the training division of the Centre for
+              Parliamentary Studies.
+            </p>
 
-          <img
-            src="/images/about_us_new.png"
-            alt="Government Exchange Brochure"
-            class="about-image rounded-lg shadow-lg"
-          />
+            <p class="text-gray-700 leading-relaxed">
+              Based at the centre of Whitehall, and with strong links to
+              Parliament and Government through our Advisory Board, we are
+              acutely aware of the current challenges being faced in the civil
+              service and wider public sector.
+            </p>
 
-          <p class="text-gray-700 leading-relaxed mb-4">The training division of the Centre for Parliamentary Studies, providing excellence in public service education</p>
+            <p class="text-gray-700 leading-relaxed">
+              We provide training that equips you with the relevant skills and
+              knowledge to respond to these in your workplace.
+            </p>
 
-          <p class="text-gray-700 leading-relaxed mb-4">
-            Government Exchange is the training division of the Centre for
-            Parliamentary Studies.
-          </p>
+            <p class="text-gray-700 leading-relaxed">
+              Our courses are particularly relevant for Civil Servants, Agency
+              and Non Departmental Public Body staff, but are equally useful for
+              those from the private, voluntary and wider public sectors
+              involved in, or with an interest in any aspect of the work of
+              Government.
+            </p>
 
-          <p class="text-gray-700 leading-relaxed mb-4">
-            Based at the centre of Whitehall, and with strong links to
-            Parliament and Government through our Advisory Board, we are
-            acutely aware of the current challenges being faced in the civil
-            service and wider public sector.
-          </p>
+            <p class="text-gray-700 leading-relaxed">
+              Through regular consultation and conducting thorough training
+              needs analyses, we ensure that our training is entirely relevant,
+              up-to-date, and tailored to the needs of your organisation. Our
+              training also covers the core Professional Skills for Government.
+            </p>
 
-          <p class="text-gray-700 leading-relaxed mb-4">
-            We provide training that equips you with the relevant skills and
-            knowledge to respond to these in your workplace.
-          </p>
+            <p class="text-gray-700 leading-relaxed">
+              We fully understand current budgetary pressures and therefore
+              ensure that our courses offer the best possible value for money.
+              In order for you to guarantee the best possible return on
+              investment, we have also developed a learning evaluation system
+              that measures the increase in knowledge or skills that occurs,
+              enabling you to accurately assess the impact of the training.
+            </p>
+          </div>
 
-          <p class="text-gray-700 leading-relaxed mb-4">
-            Our courses are particularly relevant for Civil Servants, Agency
-            and Non Departmental Public Body staff, but are equally useful for
-            those from the private, voluntary and wider public sectors
-            involved in, or with an interest in any aspect of the work of
-            Government.
-          </p>
-
-          <p class="text-gray-700 leading-relaxed mb-4">
-            Through regular consultation and conducting thorough training
-            needs analyses, we ensure that our training is entirely relevant,
-            up-to-date, and tailored to the needs of your organisation. Our
-            training also covers the core Professional Skills for Government.
-          </p>
-
-          <p class="text-gray-700 leading-relaxed mb-4">
-            We fully understand current budgetary pressures and therefore
-            ensure that our courses offer the best possible value for money.
-            In order for you to guarantee the best possible return on
-            investment, we have also developed a learning evaluation system
-            that measures the increase in knowledge or skills that occurs,
-            enabling you to accurately assess the impact of the training.
-          </p>
+          <div class="lg:top-8">
+            <img
+              src="/images/about_us_new.png"
+              alt="Government Exchange Brochure"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -424,35 +427,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.about-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.about-image {
-  float: right;
-  position: relative;
-  top: 20px;
-  margin: 0 0 1.5rem 1.5rem;
-  width: 100%;
-  max-width: 400px;
-}
-
-@media (min-width: 768px) {
-  .about-image {
-    width: 45%;
-    max-width: 500px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .about-image {
-    width: 50%;
-    max-width: 600px;
-    margin-left: 2rem;
-  }
-}
-
 .slide-next-enter-active,
 .slide-next-leave-active,
 .slide-prev-enter-active,
