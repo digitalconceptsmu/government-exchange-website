@@ -93,7 +93,7 @@ const policies = [
           class="flex flex-col lg:flex-row justify-between gap-4 text-sm text-gray-400"
         >
           <div>
-            <p>© 2020 {{ companyInfo.name }}</p>
+            <p>{{ companyInfo.name }}</p>
             <p class="mt-1">
               Company no: {{ companyInfo.companyNo }} | {{ companyInfo.vatNo }}
             </p>
