@@ -6,5 +6,14 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
   colorMode: {
     classSuffix: ''
+  },
+  runtimeConfig: {
+    // Private keys (only available server-side)
+    // Add private keys here if needed in the future
+
+    // Public keys (exposed to client-side)
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:8080/api'
+    }
   }
 })

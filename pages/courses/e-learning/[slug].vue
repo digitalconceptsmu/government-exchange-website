@@ -317,17 +317,19 @@ useHead({
                 <p class="text-xs md:text-sm text-gray-700 leading-relaxed mb-4 md:mb-6">
                   {{ course.freeEvaluation.description }}
                 </p>
-                <div class="space-y-3">
+                <div class="space-y-4">
                   <Button class="w-full bg-yellow-500 hover:bg-yellow-600 text-sm md:text-base" size="lg">
                     LEARN MORE
                   </Button>
-                  <Button
-                    variant="secondary"
-                    class="w-full bg-gray-700 hover:bg-gray-800 text-white text-sm md:text-base"
-                    size="lg"
-                  >
-                    ENROLL NOW
-                  </Button>
+                  <NuxtLink :to="`/courses/e-learning/checkout/${slug}`">
+                    <Button
+                      variant="secondary"
+                      class="w-full bg-gray-700 hover:bg-gray-800 text-white text-sm md:text-base"
+                      size="lg"
+                    >
+                      ENROLL NOW
+                    </Button>
+                  </NuxtLink>
                 </div>
               </div>
             </div>

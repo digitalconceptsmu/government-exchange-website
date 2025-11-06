@@ -45,9 +45,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
 };
 
 const downloadForm = (format: "pdf" | "word") => {
-  // Logique pour télécharger le formulaire
   console.log(`Downloading ${format} form for course: ${slug}`);
-  // Ajoutez ici le lien de téléchargement réel
   closeDropdowns();
 };
 
